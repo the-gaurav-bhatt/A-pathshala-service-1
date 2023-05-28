@@ -1,4 +1,5 @@
 'use client';
+import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
 import './globals.css';
 // import { Metamedata } from 'next';
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
             </header>
             {/* <SkeletonCard /> */}
             {children}
+            <Footer />
           </cookieContext.Provider>
         </userContext.Provider>
       </body>

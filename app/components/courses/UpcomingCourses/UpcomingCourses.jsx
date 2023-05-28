@@ -1,6 +1,6 @@
 import React from 'react';
 import CourseCard from '../CourseCard';
-import CourseTeachers from '../../courseConsume/CourseTeachers';
+import CourseTeachers from '../../courseConsume/CourseTeacher1';
 
 const UpcomingCourses = () => {
   const course = {
@@ -52,7 +52,7 @@ const UpcomingCourses = () => {
         Our Upcoming Courses
       </h1>
       <div className="shadow-md border">
-        <div className="flex  items-center justify-center">
+        <div className="flex pt-8  items-center justify-center">
           <CourseCard course={course} />
         </div>
         <CourseTeachers />

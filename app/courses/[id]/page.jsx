@@ -2,7 +2,8 @@ import Checkout from '@/app/components/courseConsume/Checkout';
 import CourseContent from '@/app/components/courseConsume/CourseContent';
 import CourseHeader from '@/app/components/courseConsume/CourseHeader';
 import CourseReview from '@/app/components/courseConsume/CourseReview';
-import CourseTeachers from '@/app/components/courseConsume/CourseTeachers';
+// import CourseTeachers from '@/app/components/courseConsume/CourseTeachers';
+import CourseTeachers from '@/app/components/courseConsume/CourseTeacher1';
 import CourseBenefits from '@/app/components/courseConsume/CourseBenefits';
 const getCourse = async (id) => {
   const res = await fetch(
@@ -23,7 +24,7 @@ async function CourseDetail({ params }) {
   console.log(data);
   return (
     <div className="grid  grid-cols-3 ">
-      <div className="lg:ms-8 relative pb-8 col-span-2 px-4 sm:px-6 lg:px-8">
+      <div className="lg:ms-8 relative pb-8 col-span-3 px-4 sm:px-6 lg:px-8">
         <CourseHeader course={course} />
 
         <div className="flex">
@@ -50,7 +51,7 @@ async function CourseDetail({ params }) {
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <Checkout course={course} />
+        {/* <Checkout course={course} /> */}
       </div>
     </div>
   );
