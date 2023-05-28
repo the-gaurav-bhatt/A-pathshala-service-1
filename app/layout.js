@@ -1,6 +1,7 @@
 'use client';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
+import SuccessMessage from './components/spinners/SuccessMessage';
 import './globals.css';
 // import { Metamedata } from 'next';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -15,7 +16,7 @@ import { Source_Sans_Pro } from 'next/font/google';
 //     icon: '/icon.svg',
 //   },
 // };
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 // If loading a variable font, you don't need to specify the font weight
 const ssp = Source_Sans_Pro({
   subsets: ['latin'],
@@ -28,12 +29,25 @@ export const cookieContext = createContext({});
 export default function RootLayout({ children }) {
   const [user, setUser] = useState({});
   const [cookie, setCookie] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    if (user._id) {
+      setLoggedIn(true);
+      setTimeout(() => {
+        setLoggedIn(false);
+      }, 3000);
+    }
+  }, [user]);
+
   return (
     <html lang="en">
       <body className={ssp.className}>
         <userContext.Provider value={{ user, setUser }}>
           <cookieContext.Provider value={{ cookie, setCookie }}>
             <header>
+              {loggedIn && (
+                <SuccessMessage message={'You Have logged in Successfully'} />
+              )}
               <Navbar />
             </header>
             {/* <SkeletonCard /> */}
