@@ -40,6 +40,7 @@ export default function Navbar() {
         setIsLoggedIn(false);
         setUser({});
         setCookie(null);
+        setToggleProfile(false);
         router.push('/');
       }
     } catch (error) {
@@ -49,12 +50,12 @@ export default function Navbar() {
 
   return (
     <nav
-      className="flex flex-col pb-2 bg-sky-50 sm:flex-row justify-evenly items-center pt-4
+      className="flex flex-col pb-2 bg-sky-50 sm:flex-row justify-around items-center pt-4
  border-b-gray-200 border
     "
     >
       <Logo />
-      {currentUrl != '/courses' && <SearchBar />}
+      {/* {currentUrl != '/courses' && <SearchBar />} */}
       {/* <Link
         href={'/become-teacher'}
         className="text-3xl px-2 rounded-md shadow-lg whitespace-nowrap font-bold text-primary-600"

@@ -3,13 +3,13 @@ import React from 'react';
 const SuccessMessage = ({ message }) => {
   return (
     <div
-      class="max-w-xs z-50 fixed  left-1/4 delay-100 bg-white border rounded-md shadow-lg "
+      className="max-w-xs z-50 fixed left-[40vw] top-10 delay-100 bg-white border rounded-md shadow-lg "
       role="alert"
     >
-      <div class="flex  p-4">
-        <div class="flex-shrink-0">
+      <div className="flex  p-4">
+        <div className="flex-shrink-0">
           <svg
-            class="h-4 w-4 text-green-500 mt-0.5"
+            className="h-4 w-4 text-green-500 mt-0.5"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"

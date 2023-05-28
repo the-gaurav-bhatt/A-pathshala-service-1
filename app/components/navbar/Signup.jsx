@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { userContext, cookieContext } from '@/app/layout';
 import BounceSpinners from '../spinners/BounceSpinners';
+import SuccessMessage from '../spinners/SuccessMessage';
 const Signup = () => {
   const { setUser } = useContext(userContext);
   const { setCookie } = useContext(cookieContext);
@@ -70,29 +71,6 @@ const Signup = () => {
         setUser(data.userProfile);
         console.log(data);
         router.back();
-        //   const profileResponse = await fetch(
-        //     'https://a-pathshala-service-2.onrender.com/api/v1/user/profile',
-        //     {
-        //       method: 'GET',
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //         authorization: data.token,
-        //       },
-        //       // credentials: 'include',
-        //     }
-        //   );
-        //   console.log(await profileResponse.json());
-        //   if (profileResponse.ok) {
-        //     const profileData = await profileResponse.json();
-        //     console.log('login success' + profileData);
-        //     setLoading(false);
-        //     setUser(profileData);
-        //   }
-        //   router.back();
-        // } else {
-        //   setLoading(false);
-        //   setError(true);
-        //   console.log(response);
       }
     } catch (error) {
       setLoading(false);
@@ -130,7 +108,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex  items-center justify-center">
+    <div className=" bg-blue-200 bg-opacity-50 flex  items-center justify-center">
       <div className="bg-white w-full sm:w-1/2 md:w-1/2 lg:w-1/3 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
@@ -180,7 +158,7 @@ const Signup = () => {
               value={username}
               onChange={handleUsernameChange}
             />
-            <div className="border px-2 inline-flex items-center justify-center ms-6 mt-2 mb-0  rounded">
+            {/* <div className="border px-2 inline-flex items-center justify-center ms-6 mt-2 mb-0  rounded">
               <label htmlFor="role">Role:</label>
               <select
                 name="role"
@@ -191,7 +169,7 @@ const Signup = () => {
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
               </select>
-            </div>
+            </div> */}
           </div>
           <div className="mb-4">
             <label

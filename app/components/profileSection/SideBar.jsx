@@ -1,8 +1,17 @@
 'use client';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { userContext } from '@/app/layout';
+import { useContext } from 'react';
 const SideBar = () => {
+  const { setUser } = useContext(userContext);
+  const router = useRouter();
   const currRoute = usePathname();
+  const handleClick = () => {
+    setUser({});
+    router.push('/');
+  };
   const selected =
     ' text-blue-500 bg-slate-50 px-2 rounded-s-full text-sm font-bold ';
   const others = ' hover:rounded-s-full text-black px-2 text-sm font-bold ';
@@ -93,8 +102,8 @@ const SideBar = () => {
           </svg>
           Settings
         </Link>
-        <Link
-          href="/logout"
+        <button
+          onClick={() => handleClick()}
           className={` ${
             currRoute === '/account-profile/logout' ? selected : others
           }mt-1 flex pe-2 sm:mt-0 sm:ml-3 px-3 py-2  font-bold  hover:bg-gray-200 focus:outline-none focus:bg-slate-100 focus:text-white"
@@ -124,7 +133,7 @@ const SideBar = () => {
             />
           </svg>
           Logout
-        </Link>
+        </button>
       </div>
     </aside>
   );
