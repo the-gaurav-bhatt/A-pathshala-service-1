@@ -1,12 +1,4 @@
 'use client';
-export const metadata = {
-  title: 'A+ Pathshala',
-  description: 'This Platform Empowers Individual Teachers ',
-  icons: {
-    icon: '/icon.svg',
-  },
-};
-
 import React, { Suspense, useContext } from 'react';
 import ProfileSpinner from './components/spinners/ProfileSpinner';
 import UpcomingCourses from './components/courses/UpcomingCourses/UpcomingCourses';
@@ -15,6 +7,13 @@ import Hero1 from './components/hero/Hero1';
 import { userContext } from './layout';
 import { useEffect, useState } from 'react';
 import SuccessMessage from './components/spinners/SuccessMessage';
+export const metadata = {
+  title: 'A+ Pathshala',
+  description: 'This Platform Empowers Individual Teachers ',
+  icons: {
+    icon: '/icon.svg',
+  },
+};
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const { user } = useContext(userContext);
