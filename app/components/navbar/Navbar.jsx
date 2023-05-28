@@ -87,7 +87,7 @@ export default function Navbar() {
               >
                 {!user?.img ? (
                   <span className="bg-blue-400 text-lg text-white m-2 z-50 flex justify-center items-center h-10 w-10  rounded-full text-center">
-                    {user.name[0]}
+                    {user?.name[0]}
                   </span>
                 ) : (
                   <img
@@ -98,7 +98,7 @@ export default function Navbar() {
                     alt="Profile"
                   />
                 )}
-                <span className="text-gray-700 font-medium">{user.name}</span>
+                <span className="text-gray-700 font-medium">{user?.name}</span>
               </button>
               <Link
                 href="/account-profile/mycourses"

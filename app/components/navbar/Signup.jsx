@@ -102,8 +102,7 @@ const Signup = () => {
   const isPasswordValid = () => {
     // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit
 
-    const passwordRegex =
-      /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{8,16}$/;
+    const passwordRegex = /^(?!.*\s)(?=.*[a-z]).{8,16}$/;
     return passwordRegex.test(password);
   };
 
@@ -215,8 +214,7 @@ const Signup = () => {
               <p>
                 <span className="text-red-500 text-sm tracking-tighter leading-3 mt-1">
                   Password must be at least 8 characters long and contain at
-                  least one uppercase letter, one lowercase letter, and one
-                  digit and one special character
+                  least one letter
                 </span>
               </p>
             )}
