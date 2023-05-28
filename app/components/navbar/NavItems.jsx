@@ -3,10 +3,14 @@ import NavLink from './NavLink';
 const NavItems = () => {
   return (
     <div className=" justify-between sm:hidden lg:flex  items-center">
-      <NavLink href={'#'} label={'Bootcamps'} />
-      <NavLink href={'/courses'} label={'Courses'} />
-      <NavLink href={'/community'} label={'A+ Community'} />
-      <NavLink href={'/contact'} label={'Contact'} />
+      <NavLink href={'#'} disable={true} label={'Bootcamps'} />
+      <NavLink
+        href={'/account-profile/mycourses'}
+        disable={false}
+        label={'My Courses'}
+      />
+      <NavLink href={'/community'} disable={true} label={'A+ Community'} />
+      <NavLink href={'/contact'} disable={false} label={'Contact'} />
     </div>
   );
 };

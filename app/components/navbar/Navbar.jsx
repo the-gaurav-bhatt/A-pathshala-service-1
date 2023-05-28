@@ -50,7 +50,7 @@ export default function Navbar() {
   return (
     <nav
       className="flex flex-col pb-2 bg-sky-50 sm:flex-row justify-evenly items-center pt-4
- border-b-gray-200 border-2
+ border-b-gray-200 border
     "
     >
       <Logo />
