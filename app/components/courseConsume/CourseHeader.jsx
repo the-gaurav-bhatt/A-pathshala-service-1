@@ -4,14 +4,14 @@ const CourseHeader = ({ course }) => {
   return (
     <>
       <div className="w-full">
-        <h1 className="text-4xl pt-2 font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl  font-bold text-gray-900 py-4">
           {course.title}
         </h1>
       </div>
       <div className="flex border-b pb-2 items-center justify-between mb-4">
         <div className="flex  items-center">
           <p className=" flex font-medium text-gray-900 mr-4">
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -32,14 +32,14 @@ const CourseHeader = ({ course }) => {
                 d="M11.6984 2.39234C11.8101 2.12378 12.1906 2.12378 12.3023 2.39234L14.6259 7.97894C14.817 8.43839 15.249 8.75232 15.7451 8.79209L21.7763 9.27561C22.0662 9.29885 22.1838 9.66068 21.9629 9.84991L17.3677 13.7861C16.9898 14.1099 16.8248 14.6178 16.9402 15.1018L18.3441 20.9873C18.4116 21.2702 18.1038 21.4938 17.8556 21.3422L12.692 18.1883C12.2674 17.9289 11.7333 17.9289 11.3086 18.1883L6.14508 21.3422C5.89685 21.4938 5.58906 21.2702 5.65655 20.9873L7.06044 15.1018C7.1759 14.6178 7.01086 14.1099 6.63294 13.7861L2.0378 9.8499C1.8169 9.66068 1.93447 9.29885 2.2244 9.27561L8.25561 8.79209C8.75163 8.75232 9.18371 8.43839 9.37481 7.97894L11.6984 2.39234Z"
                 stroke="rgba(0,0,0,0)"
               />
-            </svg>
-            {course.rating} |{'  '}
-            <Link href={'#'} className={'text-blue-500'}>
+            </svg> */}
+            {/* {course.rating} |{'  '} */}
+            {/* <Link href={'#'} className={'text-blue-500'}>
               {' ' + course.teacher}
-            </Link>
+            </Link> */}
           </p>
         </div>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <button className="mr-4 flex pe-2 bg-blue-200 py-1 px-3 rounded-lg text-gray-800">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ const CourseHeader = ({ course }) => {
             </svg>
             Save
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );

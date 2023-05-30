@@ -8,8 +8,11 @@ const SideBar = () => {
   const { setUser } = useContext(userContext);
   const router = useRouter();
   const currRoute = usePathname();
-  const handleClick = () => {
+  const handleClick = async () => {
+    // setIsLoggedIn(false);
     setUser({});
+    // setCookie(null);
+    // setToggleProfile(false);
     router.push('/');
   };
   const selected =

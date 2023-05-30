@@ -4,7 +4,9 @@ const CourseTeachers = () => {
   const team = [
     {
       name: 'Prince Singh',
-      position: "India's top 1 Rank in Leetcode ",
+      position: "India's top 1 Rank at Coding Ninjas ",
+      intro:
+        'Introducing Prince Singh, a coding prodigy with Institute Rank 1 and Global Rank 111 at Gfg. He also holds All India Rank 1 at Coding Ninjas and Global Rank 13 at Interview Bit, showcasing his exceptional skills and expertise in programming and problem-solving.',
 
       socialMedia: [
         {
@@ -16,6 +18,8 @@ const CourseTeachers = () => {
     },
     {
       name: 'Jiwan Bhattarai',
+      intro:
+        'Jiwan Bhattarai is an experienced network security engineer with expertise in various certifications such as CCIE #60261, CCNA, CCNP Security, CEH, Cisco FTD, ISE, ASA, and SD-WAN. He excels in ensuring secure network infrastructures.',
       socialMedia: [
         {
           platform: 'LinkedIn',
@@ -37,6 +41,8 @@ const CourseTeachers = () => {
     },
     {
       name: 'Nishant Phuyal',
+      intro:
+        ' Nishant Phuyal is a dynamic entrepreneur leading ReflexIT Solution as its CEO. With a background in software engineering and project management, Nishant brings a wealth of experience to the table. ',
       socialMedia: [
         {
           platform: 'LinkedIn',
@@ -50,6 +56,8 @@ const CourseTeachers = () => {
     },
     {
       name: 'Bishworaj Poudel',
+      intro:
+        ' Bishworaj Poudel is a skilled mobile app developer, specializing in Flutter development. He is also a popular YouTuber with over 260k subscribers.',
       socialMedia: [
         {
           platform: 'LinkedIn',
@@ -62,6 +70,8 @@ const CourseTeachers = () => {
     },
     {
       name: 'Biplop Karki',
+      intro:
+        'Biplop Karki is a versatile freelance developer and serves as the CTO at ClampHook. He has a strong entrepreneurial spirit and holds positions as the CEO at Hyperse.',
       socialMedia: [
         {
           platform: 'LinkedIn',
@@ -82,10 +92,54 @@ const CourseTeachers = () => {
       ],
       position: 'Co-founder and CTO',
       company: 'A+ Pathshala',
+      intro:
+        ' Dilli Raj Timalsina is a co-founder and the CTO of A+ Pathshala. He is an open-source enthusiast and has set his sights on participating in the Google Summer of Code (GSOC) in 2024.',
       qualifications: ['Open Source Enthusiast', 'Target GSOC-2024'],
-      image: '',
+      image: '/avatar.avif',
     },
   ];
+
+  // return (
+  //   <div className=" px-4 bg-pink-100 rounded-md py-10 sm:px-6 lg:px-8 mx-auto">
+  //     <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+  //       <h2 className="text-2xl font-bold md:text-4xl md:leading-tight ">
+  //         Teachers For This Bootcamp
+  //       </h2>
+  //     </div>
+
+  //     <div className="grid grid-cols-1 sm:grid-cols-3  gap-6">
+  //       {team.map((member) => (
+  //         <div
+  //           key={member.name}
+  //           className="flex flex-col overflow-hidden h-60 bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row"
+  //         >
+  //           {/*  <!-- Image --> */}
+  //           <figure className="flex-1">
+  //             <img
+  //               src={member.image}
+  //               alt="card image"
+  //               className="object-cover min-h-full aspect-auto"
+  //             />
+  //           </figure>
+  //           {/*  <!-- Body--> */}
+  //           <div className="flex-1 p-6 sm:mx-6 sm:px-0">
+  //             <header className="flex gap-4 mb-4">
+  //               <div>
+  //                 <h3 className="text-xl font-medium text-slate-700">
+  //                   {member.name}
+  //                 </h3>
+  //                 <p className="text-sm line-clamp-2 text-slate-400">
+  //                   {member.position}
+  //                 </p>
+  //               </div>
+  //             </header>
+  //             <p className=" leading-4 text-xs ">{member.intro}</p>
+  //           </div>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -100,7 +154,7 @@ const CourseTeachers = () => {
         {team.map((member) => (
           <div
             key={member.name}
-            className="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200"
+            className="flex flex-col h-fit rounded-xl p-4 md:p-3 bg-white border border-gray-200"
           >
             <div className="flex items-center gap-x-4">
               <img
@@ -114,7 +168,10 @@ const CourseTeachers = () => {
               </div>
             </div>
 
-            <p className="mt-3 text-gray-500">{member.position}</p>
+            <p className="mt-3 text-gray-800">{member.position}</p>
+            <p className="text-xs line-clamp-6 text-gray-600 ">
+              {member.intro}
+            </p>
 
             <div className="mt-3 rounded-full space-x-1">
               {member.socialMedia.map((social, index) => (

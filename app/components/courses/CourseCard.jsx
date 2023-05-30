@@ -16,7 +16,7 @@ const CourseCard = ({ course }) => {
       <img
         src={course.image}
         alt={course.title}
-        className="w-full h-48 border border-blue-50 object-cover"
+        className=" border border-blue-50 object-cover"
       />
       <div className="p-2">
         <div className="flex justify-between">

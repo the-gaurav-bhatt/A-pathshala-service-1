@@ -51,7 +51,7 @@ const UpcomingCourses = () => {
       <h1 className="text-3xl ms-8 font-semibold my-2 mx-4">
         Our Upcoming Courses
       </h1>
-      <div className="shadow-md border">
+      <div className="shadow-md bg-pink-50 border">
         <div className="flex pt-8  items-center justify-center">
           <CourseCard course={course} />
         </div>

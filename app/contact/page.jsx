@@ -4,6 +4,7 @@ import { useState } from 'react';
 import BounceSpinners from '../components/spinners/BounceSpinners';
 import SuccessMessage from '../components/spinners/SuccessMessage';
 import ErrorMessage from '../components/spinners/ErrorMessage';
+import CourseFAQ from '../components/courseConsume/CourseFAQ';
 const ContactPage = () => {
   const [contact, setContact] = useState({
     name: '',
@@ -15,7 +16,12 @@ const ContactPage = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const [openFAQ, setopenFAQ] = useState(false);
+  const handleFAQopen = (e) => {
+    e.preventDefault();
+    console.log('Opening FAQ');
+    setopenFAQ(true);
+  };
   const InputEvent = (event) => {
     const { name, value } = event.target;
     setContact((preVal) => {
@@ -238,9 +244,9 @@ const ContactPage = () => {
                 <p class="mt-1 text-sm text-gray-500">
                   Search our FAQ for answers to anything you might ask.
                 </p>
-                <a
+                <button
+                  onClick={handleFAQopen}
                   class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-800 "
-                  href="#"
                 >
                   Visit FAQ
                   <svg
@@ -258,9 +264,10 @@ const ContactPage = () => {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
+            {openFAQ && <CourseFAQ />}
 
             <div class=" flex gap-x-7 py-6">
               <svg
