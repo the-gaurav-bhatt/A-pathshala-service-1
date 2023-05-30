@@ -101,7 +101,7 @@ const HomePage = () => {
                 <p className="font-semibold">Open Source Contribution</p>
                 <p>
                   Emphasize the value of having pull requests merged in large
-                  organizations' codebases.
+                  organizations&apos; codebases.
                 </p>
               </div>
             </div>
