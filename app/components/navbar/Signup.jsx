@@ -63,7 +63,7 @@ const Signup = () => {
           }),
         }
       );
-      console.log(response.body);
+      // console.log(response.body);
       if (response.ok) {
         const data = await response.json();
         setCookie(data.token);
@@ -71,6 +71,8 @@ const Signup = () => {
         setUser(data.userProfile);
         console.log(data);
         router.back();
+      } else {
+        throw new Error(response.status);
       }
     } catch (error) {
       setLoading(false);
