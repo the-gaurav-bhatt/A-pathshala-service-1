@@ -12,18 +12,20 @@ function NavLink({ href, label, disable }) {
   return (
     <>
       <button
-        className={` relative px-2 ${disable ? ' cursor-not-allowed ' : ' '} `}
+        className={` relative px-2 ${
+          disable ? ' hidden md:flex cursor-not-allowed ' : ' '
+        } `}
       >
         <Link
           href={href}
           className={` ${currRoute === href ? selected : others}${
-            disable ? ' cursor-not-allowed ' : ' '
+            disable ? ' cursor-not-allowed  ' : ' '
           } hover:border-b-4 pb-1 hover:text-blue-500 hover:rounded-sm hover:border-blue-500`}
         >
           {label}
         </Link>
         {disable && (
-          <span class="absolute whitespace-nowrap -top-2.5 -right-2.5 inline-flex items-center justify-center gap-1 rounded-md bg-pink-200 px-1.5 text-xs text-black">
+          <span className="absolute whitespace-nowrap -top-2.5 -right-2.5 inline-flex items-center justify-center gap-1 rounded-md bg-pink-200 px-1.5 text-xs text-black">
             Soon
           </span>
         )}

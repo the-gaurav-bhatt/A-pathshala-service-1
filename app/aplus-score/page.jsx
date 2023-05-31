@@ -21,7 +21,7 @@ const HomePage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex items-center">
-              <FiCheckCircle className="w-8 h-8 text-blue-500 mr-3" />
+              <FiCheckCircle className="w-16 h-16 text-blue-500 mr-3" />
               <div>
                 <p className="font-semibold">
                   Official Individual Student Profile
@@ -30,7 +30,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex items-center">
-              <FaGraduationCap className="w-8 h-8 text-blue-500 mr-3" />
+              <FaGraduationCap className="w-16 h-16 text-blue-500 mr-3" />
               <div>
                 <p className="font-semibold">
                   Equivalent to Engineering Degree
@@ -39,14 +39,14 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex items-center">
-              <FaHandsHelping className="w-8 h-8 text-blue-500 mr-3" />
+              <FaHandsHelping className="w-16 h-16 text-blue-500 mr-3" />
               <div>
                 <p className="font-semibold">First Job Guarantee</p>
                 <p>Minimum salary of 12 LPA</p>
               </div>
             </div>
             <div className="flex items-center">
-              <IoIosRocket className="w-8 h-8 text-blue-500 mr-3" />
+              <IoIosRocket className="w-16 h-16 text-blue-500 mr-3" />
               <div>
                 <p className="font-semibold">Valued by Top Companies</p>
                 <p>Facebook, Amazon, Apple, Netflix, Google</p>
@@ -61,9 +61,9 @@ const HomePage = () => {
           <h2 className="text-3xl font-semibold text-center mb-8">
             Evaluation Process
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:px-8 gap-8">
             <div className="flex items-center">
-              <FaUserFriends className="w-8 h-8 text-blue-500 mr-3" />
+              <FaUserFriends className="w-16 h-16 text-blue-500 mr-3" />
               <div>
                 <p className="font-semibold">A+ Public Activity</p>
                 <p>
@@ -75,7 +75,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex items-center">
-              <FaLaptopCode className="w-8 h-8 text-blue-500 mr-3" />
+              <FaLaptopCode className="w-16 h-16 text-blue-500 mr-3" />
               <div>
                 <p className="font-semibold">Professional/Tech Profile</p>
                 <p>

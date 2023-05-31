@@ -10,21 +10,22 @@ const sora = Sora({
   weight: 'variable',
   subsets: ['latin'],
 });
+
 const CourseCard = ({ course }) => {
   return (
-    <div className="bg-white w-1/2  rounded-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+    <div className="bg-white w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 rounded-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
       <img
         src={course.image}
         alt={course.title}
-        className=" border border-blue-50 object-cover"
+        className="border border-blue-50 object-cover w-full"
       />
       <div className="p-2">
         <div className="flex justify-between">
-          <div className=" text-sm text-neutral-500">{'Technology'}</div>
-          <div className=" h-6  flex items-center justify-center ">
+          <div className="text-sm text-neutral-500">{'Technology'}</div>
+          <div className="h-6 flex items-center justify-center">
             <p
               className={
-                ' bg-blue-600 text-white px-3 whitespace-nowrap rounded-xl'
+                'bg-blue-600 text-white px-3 whitespace-nowrap rounded-xl'
               }
             >
               New
@@ -32,24 +33,19 @@ const CourseCard = ({ course }) => {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <h2
-            className={
-              ssp.className + ' text-lg line-clamp-2  text-neutral-900 mb-4'
-            }
-          >
+          <h2 className="text-lg line-clamp-2 text-neutral-900 mb-4">
             {course.title}
           </h2>
-          {/* <div className="text-gray-700 text-sm mb-4">{course.duration}</div> */}
         </div>
         <div className="flex justify-between items-center">
-          <p className=" text-black  flex ">
-            <Image src={'/star.svg'} height={20} width={20} alt="stars"></Image>
+          <p className="text-black flex items-center">
+            <Image src={'/star.svg'} height={20} width={20} alt="stars" />
             {4.5}
-            <span className=" text-neutral-500 ">
+            <span className="text-neutral-500">
               {`(${course.totalStudent ? course.totalStudent : '1000'})`}
             </span>
           </p>
-          <div className="text-gray-600 whitespace-nowrap line-clamp-0 text-lg font-medium">
+          <div className="text-gray-600 whitespace-nowrap text-lg font-medium">
             Rs {course.price}
           </div>
         </div>
@@ -63,17 +59,11 @@ const CourseCard = ({ course }) => {
 
           <Link
             href={'/account-profile/purchase?courseId=1'}
-            className="inline-block bg-indigo-500 whitespace-nowrap hover:bg-indigo-600 text-white text-sm font-semibold py-2 px-4 mt-4 rounded transition duration-200"
+            className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-semibold py-2 px-4 mt-4 rounded transition duration-200"
           >
             Buy Now
           </Link>
         </div>
-        {/* <Link
-          href={course.image}
-          className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-semibold py-2 px-4 mt-4 rounded transition duration-200"
-        >
-          View Course
-        </Link> */}
       </div>
     </div>
   );

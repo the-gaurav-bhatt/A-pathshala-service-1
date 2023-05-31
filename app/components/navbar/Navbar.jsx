@@ -21,12 +21,14 @@ export default function Navbar() {
   const router = useRouter();
   const [toggleProfile, setToggleProfile] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const currentUrl = usePathname();
   const { user } = useContext(userContext);
   const { setCookie } = useContext(cookieContext);
+
   useEffect(() => {
     if (user?._id) {
       setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
     }
   }, [user]);
 
@@ -50,7 +52,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="flex flex-col pb-2 bg-sky-50 sm:flex-row justify-around items-center pt-4
+      className="flex pb-2 bg-sky-50 sm:flex-row justify-around items-center pt-4
  border-b-gray-200 border
     "
     >
@@ -106,7 +108,7 @@ export default function Navbar() {
               >
                 View Profile
               </Link>
-              <Link
+              {/* <Link
                 href="#"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               >
@@ -129,7 +131,7 @@ export default function Navbar() {
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               >
                 Courses
-              </Link>
+              </Link> */}
               {isLoggedIn && (
                 <button
                   onClick={handleLogout}

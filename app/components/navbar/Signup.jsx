@@ -109,7 +109,7 @@ const Signup = () => {
   };
 
   return (
-    <div className=" bg-blue-200 bg-opacity-50 flex  items-center justify-center">
+    <div className=" bg-blue-200 h-screen bg-opacity-50 flex  items-center justify-center">
       <div className="bg-white w-full sm:w-1/2 md:w-1/2 lg:w-1/3 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
@@ -236,18 +236,18 @@ const Signup = () => {
             </button>
           </div>
         </form>
-        <span className="text-lg font-bold flex justify-center items-center ">
+        {/* <span className="text-lg font-bold flex justify-center items-center ">
           Or
-        </span>
+        </span> */}
         <div className="flex mt-2 justify-center gap-2">
-          <button
+          {/* <button
             onClick={handleGoogle}
             disabled={loading}
             className={` bg-blue-500  hover:bg-sky-700 whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4
           `}
           >
             Log In with Google
-          </button>
+          </button> */}
           {/* <button
             onClick={handleFaceBook}
             className="bg-blue-500 hover:bg-blue-700 whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4"

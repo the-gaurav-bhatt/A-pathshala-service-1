@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
+import YouTubeVideo from '../youtubeEmbed/YoutubeVideo';
 const CourseContent = () => {
   const [expandedSections, setExpandedSections] = useState([]);
   const [showVideo, setShowVideo] = useState(false);
@@ -20,22 +21,21 @@ const CourseContent = () => {
   return (
     <>
       <h3 className="text-2xl py-2 font-bold">Course Content</h3>
-      <div className=" flex-col  border-2  ">
+      <div className="flex flex-col border-2">
         {sections.map((section) => (
           <div
             key={section.id}
-            className=" py-4 bg-pink-100/20 justify-center items-center ps-8 px-3 rounded-md  "
+            className="py-4 bg-pink-100/20 justify-center items-center ps-4 p-0 md:px-2 rounded-md"
           >
             <div
-              className="flex items-center px-8 justify-between cursor-pointer"
+              className="flex items-center px-4 justify-between cursor-pointer"
               onClick={() => toggleSection(section.id)}
             >
-              {' '}
-              <h2 className="text-lg font-bold">
+              <h2 className="text-base sm:text-lg font-bold">
                 {section.name}: {section.title}
               </h2>
               <svg
-                className={`ml-4 h-6 w-6 transform ${
+                className={`ml-2 md:ml-4 h-4 sm:h-6 w-4 sm:w-6 transform ${
                   isSectionExpanded(section.id) ? 'rotate-180' : ''
                 }`}
                 fill="none"
@@ -51,14 +51,14 @@ const CourseContent = () => {
               </svg>
             </div>
             {isSectionExpanded(section.id) && (
-              <div className="flex bg-white ps-20 flex-col mt-4">
+              <div className="flex flex-col mt-2">
                 {section.topics.map((video) => (
                   <div key={video.id} className="flex items-center mt-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      className=" mx-3 h-5 w-5"
+                      width="12"
+                      height="12"
+                      className="mx-2 sm:mx-3 h-4 sm:h-5 w-4 sm:w-5"
                     >
                       <path
                         fillRule="evenodd"
@@ -71,37 +71,35 @@ const CourseContent = () => {
                         d="M6.788 5.363a1 1 0 011.035.068l2.5 1.75a1 1 0 010 1.638l-2.5 1.75A1 1 0 016.25 9.75v-3.5a1 1 0 01.538-.887z"
                       ></path>
                     </svg>
-                    {showVideo && (
-                      <VideoPlayer
-                        setShowVideo={setShowVideo}
-                        url={'/video-1.mp4'}
-                      />
-                    )}
+                    {showVideo && <YouTubeVideo videoId={'GnodscC2p-A'} />}
                     {video.free ? (
                       <button
-                        onClick={() => setShowVideo(() => !showVideo)}
-                        className="text-blue-500 hover:text-blue-700"
+                        onClick={() => setShowVideo(!showVideo)}
+                        className="text-blue-500 hover:text-blue-700 text-sm sm:text-base"
                       >
                         <span>{video.title}</span>
                       </button>
                     ) : (
                       <div className="flex items-center">
-                        <span>{video.title}</span>
-
+                        <span className="text-sm sm:text-base">
+                          {video.title}
+                        </span>
                         <img
                           src="/locked.svg"
-                          className=" ms-3 h-5 w-5"
+                          className="ml-2 sm:ml-3 h-4 sm:h-5 w-4 sm:w-5"
                           alt=""
                         />
                       </div>
                     )}
                   </div>
                 ))}
-                <div className="mt-4">
+                <div className="mt-2">
                   <ul className="list-disc list-inside">
                     {section.studyMaterials?.map((material) => (
-                      <li key={material.id} className=" list-none ps-3 ">
-                        <a href={material.url}>{material.title}</a>
+                      <li key={material.id} className="list-none ps-2">
+                        <a href={material.url} className="text-sm sm:text-base">
+                          {material.title}
+                        </a>
                       </li>
                     ))}
                   </ul>

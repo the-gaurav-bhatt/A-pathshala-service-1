@@ -1,15 +1,27 @@
+'use client';
 import Header from '@/app/components/checkoutSection/CheckoutHeader';
+
 import CheckoutSummary from '@/app/components/checkoutSection/CourseSummary';
+import CheckoutPage1 from '@/app/components/checkoutSection/Payment1';
 import CheckoutForm from '@/app/components/checkoutSection/PaymentSection';
-import React from 'react';
+import { userContext } from '@/app/layout';
+import { useRouter } from 'next/navigation';
+import React, { useContext } from 'react';
 
 const page = () => {
-  return (
-    <div className="grid grid-cols-2 md:px-4 lg:px-8 gap-x-2  ">
-      <CheckoutSummary />
-      <CheckoutForm />{' '}
-    </div>
-  );
+  const router = useRouter();
+  const { user } = useContext(userContext);
+  if (!user._id) {
+    router.push('/login');
+  } else {
+    return (
+      <div className="  ">
+        <CheckoutSummary />
+        {/* <CheckoutForm />{' '} */}
+        <CheckoutPage1 />
+      </div>
+    );
+  }
 };
 
 export default page;

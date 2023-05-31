@@ -49,7 +49,7 @@ const Login2 = () => {
             setCookie(data.token);
             console.log(cookie);
             setUser(data.userProfile);
-            router.push('/');
+            router.back();
           } else {
             setLoading(false);
             setError(true);
@@ -64,7 +64,6 @@ const Login2 = () => {
     } finally {
       setLoading(false);
     }
-    router.back();
     // TODO: Handle login with email and password
   };
 
@@ -118,7 +117,7 @@ const Login2 = () => {
   };
 
   return (
-    <div className="  bg-blue-200 inset-0 bg-opacity-50 flex items-center justify-center">
+    <div className="  bg-blue-200 inset-0 h-screen bg-opacity-50 flex items-center justify-center">
       <div className="bg-white  min-w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold mb-4">Login</h2>
@@ -224,16 +223,16 @@ const Login2 = () => {
             </button>
           </div>
         </form>
-        <span className="flex justify-center text-xl font-bold items-center">
+        {/* <span className="flex justify-center text-xl font-bold items-center">
           Or{' '}
-        </span>
+        </span> */}
         <div className="flex mt-2 justify-center sm:gap-1 gap-2">
-          <button
+          {/* <button
             onClick={handleGoogle}
             className="bg-red-500 hover:bg-red-700 md:text-sm whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4"
           >
             Log In with Google
-          </button>
+          </button> */}
           {/* <button
             onClick={handleFacebook}
             className="bg-blue-500 hover:bg-blue-700 whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4"

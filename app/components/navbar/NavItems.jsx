@@ -9,7 +9,7 @@ const NavItems = () => {
         disable={false}
         label={'My Courses'}
       />
-      <NavLink href={'/community'} disable={true} label={'A+ Community'} />
+      <NavLink href={'/#'} disable={true} label={'A+ Community'} />
       <NavLink href={'/contact'} disable={false} label={'Contact'} />
     </div>
   );

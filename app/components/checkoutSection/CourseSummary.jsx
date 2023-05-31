@@ -5,15 +5,8 @@ const CheckoutSummary = () => {
   const [items, setItems] = useState([
     {
       id: 1,
-      title: 'Course 1',
-      instructor: 'Instructor 1',
-      image: '/a.png',
-      price: 500,
-    },
-    {
-      id: 2,
-      title: 'Course 2',
-      instructor: 'Instructor 2',
+      title: 'Unveal the Hidden Truth of Tech Industry In Our 15 Days Bootcamp',
+      instructor: 'Beginner to Intermediate',
       image: '/a.png',
       price: 500,
     },
@@ -33,7 +26,7 @@ const CheckoutSummary = () => {
           {items.map((item) => (
             <div
               key={item.id}
-              className="flex justify-around items-center mb-2"
+              className="flex py-3 justify-around items-center mb-2"
             >
               <div className="flex items-center space-x-4">
                 <img
@@ -49,12 +42,12 @@ const CheckoutSummary = () => {
               <p className="text-gray-800 font-semibold">
                 Rs {item.price.toFixed(2)}
               </p>
-              <button
+              {/* <button
                 onClick={() => handleRemove(item.id)}
                 className="font-bold  text-3xl text-red-600"
               >
                 -
-              </button>
+              </button> */}
             </div>
           ))}
           <div className="flex justify-around items-center mt-4">
