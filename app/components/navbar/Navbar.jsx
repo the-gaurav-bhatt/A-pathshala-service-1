@@ -32,7 +32,9 @@ export default function Navbar() {
     }
   }, [user]);
 
-  const handleProfileClick = () => {};
+  const handleProfileClick = () => {
+    setToggleProfile(!toggleProfile);
+  };
   const handleLogout = async () => {
     try {
       const res = await fetch(
