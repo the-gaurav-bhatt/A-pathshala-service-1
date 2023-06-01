@@ -8,7 +8,7 @@ import { userContext } from '@/app/layout';
 import { useRouter } from 'next/navigation';
 import React, { useContext } from 'react';
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const { user } = useContext(userContext);
   if (!user._id) {
@@ -24,4 +24,4 @@ const page = () => {
   }
 };
 
-export default page;
+export default Page;

@@ -33,11 +33,11 @@ async function CourseDetail({ params }) {
             <div className="my-4  grid grid-cols-3" id="description">
               <div className=" col-span-3 lg:col-span-2">
                 <p className="">
-                  'Participating in the A+ Pathshala program include gaining a
+                  Participating in the A+ Pathshala program include gaining a
                   strong foundation in computer science and technology,
                   exploring various career options, learning essential theory
-                  and subjects, choosing the right programming language.'
-                  <br></br> 'Not only that, you will also know company creation
+                  and subjects, choosing the right programming language.
+                  <br></br> Not only that, you will also know company creation
                   and operation, experience real software development projects,
                   improving coding skills, mastering JavaScript and backend
                   development, contributing to open-source projects, gaining
@@ -47,7 +47,7 @@ async function CourseDetail({ params }) {
                   networking and cybersecurity concepts, and obtainin valuable
                   advice from industry professionals. The program also offers
                   insights into the software industry in Nepal and provides
-                  career-shaping opportunities through A+ Pathshala.',
+                  career-shaping opportunities through A+ Pathshala.,
                 </p>
                 <CourseContent />
               </div>
