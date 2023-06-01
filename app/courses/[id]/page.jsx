@@ -51,7 +51,7 @@ async function CourseDetail({ params }) {
                 </p>
                 <CourseContent />
               </div>
-              <div className=" sm:w-screen md:w-fit">
+              <div className=" w-screen lg:w-fit">
                 <Checkout course={course} />
               </div>
             </div>
