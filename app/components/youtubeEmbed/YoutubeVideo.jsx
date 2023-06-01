@@ -1,6 +1,6 @@
 const YouTubeVideo = ({ videoId }) => {
   return (
-    <div className=" w-full">
+    <div className="flex-grow w-full">
       <iframe
         src={`https://www.youtube.com/embed/${videoId}`}
         title="YouTube Video"

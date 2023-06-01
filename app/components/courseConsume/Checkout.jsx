@@ -10,7 +10,7 @@ const Checkout = ({ course }) => {
     router.push('/account-profile/purchase');
   };
   return (
-    <div className="bg-color-3-100 mb-4">
+    <div className="bg-color-3-100  mb-4">
       <div className="mb-8 w-full border rounded-sm">
         {/* <video className=" rounded-md " width={640} height={360} controls>
           <source src="/video.mp4" type="video/mp4" />

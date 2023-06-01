@@ -51,7 +51,9 @@ async function CourseDetail({ params }) {
                 </p>
                 <CourseContent />
               </div>
-              <Checkout course={course} />
+              <div className=" sm:w-screen md:w-fit">
+                <Checkout course={course} />
+              </div>
             </div>
             <CourseTeachers />
             {/* <div className="my-4" id="syllabus">
