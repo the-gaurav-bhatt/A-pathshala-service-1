@@ -1,5 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
 const CourseTeachers = () => {
   const team = [
     {
@@ -19,7 +20,7 @@ const CourseTeachers = () => {
     {
       name: 'Jiwan Bhattarai',
       intro:
-        'Jiwan Bhattarai is an experienced network security engineer with expertise in various certifications such as CCIE #60261, CCNA, CCNP Security, CEH, Cisco FTD, ISE, ASA, and SD-WAN. He excels in ensuring secure network infrastructures.',
+        'He is an experienced network security engineer with 10+ years of industry experience and expertise in various certifications such as CCIE #60261, CCNA, CCNP Security, CEH, Cisco FTD, ISE, ASA, and SD-WAN. He excels in ensuring secure network infrastructures.',
       socialMedia: [
         {
           platform: 'LinkedIn',
@@ -42,7 +43,7 @@ const CourseTeachers = () => {
     {
       name: 'Nishant Phuyal',
       intro:
-        ' Nishant Phuyal is a dynamic entrepreneur leading ReflexIT Solution as its CEO. With a background in software engineering and project management, Nishant brings a wealth of experience to the table. ',
+        ' He is a dynamic entrepreneur leading ReflexIT Solution as its CEO. With a background in software engineering and project management, Nishant brings a wealth of experience to the table. ',
       socialMedia: [
         {
           platform: 'LinkedIn',
@@ -64,7 +65,7 @@ const CourseTeachers = () => {
           url: 'https://www.linkedin.com/in/bishworajpoudelofficial/',
         },
       ],
-      position: 'Mobile App Developer',
+      position: 'Youtuber | Mobile App Developer',
       qualifications: ['Flutter Developer', 'YouTuber (260k+ subs)'],
       image: '/bishworaj.jpg',
     },
@@ -142,12 +143,14 @@ const CourseTeachers = () => {
   // );
 
   return (
-    <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div
+      className={`${inter.className} max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto`}
+    >
       <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
         <h2 className="text-2xl font-bold md:text-4xl md:leading-tight text-gray-800">
           Our Teachers
         </h2>
-        <p className="mt-1 text-gray-600">Creative people</p>
+        {/* <p className="mt-1 text-gray-600">Creative people</p> */}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-6">
@@ -170,8 +173,12 @@ const CourseTeachers = () => {
               </div>
             </div>
 
-            <p className="mt-3 text-gray-700">{member.position}</p>
-            <p className="text-sm line-clamp-6 text-gray-600">{member.intro}</p>
+            <p className="mt-3  font-semibold text-gray-700">
+              {member.position}
+            </p>
+            <p className={`${inter.className} text-sm  text-gray-800`}>
+              {member.intro}
+            </p>
 
             <div className="mt-3 space-x-1">
               {member.socialMedia.map((social, index) => (

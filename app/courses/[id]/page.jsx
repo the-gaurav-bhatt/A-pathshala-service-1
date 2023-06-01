@@ -5,6 +5,9 @@ import CourseReview from '@/app/components/courseConsume/CourseReview';
 // import CourseTeachers from '@/app/components/courseConsume/CourseTeachers';
 import CourseTeachers from '@/app/components/courseConsume/CourseTeacher1';
 import CourseBenefits from '@/app/components/courseConsume/CourseBenefits';
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
+
 const getCourse = async (id) => {
   const res = await fetch(
     `https://a-pathshala-service-2.onrender.com/api/v1/course/getCourseMetaData`,
@@ -23,7 +26,7 @@ async function CourseDetail({ params }) {
   const data = await getCourse('646cc45889de1369e32c43a7');
   console.log(data);
   return (
-    <div className="grid grid-cols-3 ">
+    <div className={` grid grid-cols-3 `}>
       <div className="lg:ms-8 relative pb-8 col-span-3 px-4 sm:px-6 lg:px-8">
         <CourseHeader course={course} />
 
@@ -32,7 +35,7 @@ async function CourseDetail({ params }) {
             <h3 className="text-2xl font-bold mb-4">Description</h3>
             <div className="my-4  grid grid-cols-3" id="description">
               <div className=" col-span-3 lg:col-span-2">
-                <p className="">
+                <p className={inter.className}>
                   Participating in the A+ Pathshala program include gaining a
                   strong foundation in computer science and technology,
                   exploring various career options, learning essential theory
