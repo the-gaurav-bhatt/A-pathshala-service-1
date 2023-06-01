@@ -72,7 +72,8 @@ const Signup = () => {
         console.log(data);
         router.back();
       } else {
-        throw new Error(response.status);
+        setLoading(false);
+        throw new Error(await response.json());
       }
     } catch (error) {
       setLoading(false);

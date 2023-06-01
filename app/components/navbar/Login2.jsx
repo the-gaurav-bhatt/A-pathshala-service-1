@@ -4,12 +4,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import BounceSpinners from '../spinners/BounceSpinners';
 import { cookieContext, userContext } from '@/app/layout';
+import OptInterface from './OptInterface';
 const Login2 = () => {
   // const { setCookie } = useContext(cookieContext);
   const { setUser } = useContext(userContext);
   const { setCookie, cookie } = useContext(cookieContext);
   console.log(cookie);
   const [email, setEmail] = useState('');
+  const [otpInterface, setOtpInterface] = useState(false);
+  const [forgetPassword, setForgetPassword] = useState(false);
   const [error, setError] = useState(false);
   const router = useRouter();
   const [password, setPassword] = useState('');
@@ -47,13 +50,11 @@ const Login2 = () => {
         .then((data) => {
           if (data.status === 'success') {
             setCookie(data.token);
-            console.log(cookie);
             setUser(data.userProfile);
             router.back();
           } else {
             setLoading(false);
             setError(true);
-            console.log(data);
             throw new Error(data);
           }
         });
@@ -65,6 +66,41 @@ const Login2 = () => {
       setLoading(false);
     }
     // TODO: Handle login with email and password
+  };
+  const handleForgotPasswordClick = () => {
+    setForgetPassword(true);
+  };
+  const handleResetPasswordClick = async () => {
+    console.log(email);
+    setLoading(true);
+
+    try {
+      const res = await fetch(
+        'https://a-pathshala-service-2.onrender.com/api/v1/user/forgetPassword',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            email,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      if (data.status === 'success') {
+        setLoading(false);
+        setOtpInterface(true);
+      } else {
+        setLoading(false);
+        setError(true);
+        throw new Error(data);
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   const handleCloseClick = () => {
@@ -98,24 +134,16 @@ const Login2 = () => {
     // }
   };
 
-  const handleFacebook = async () => {
-    // try {
-    //   const { authResponse } = await new Promise(window.FB.login);
-    //   const response = await fetch('/api/auth/facebook', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ accessToken: authResponse.accessToken }),
-    //   });
-    //   const data = await response.json();
-    //   console.log(data);
-    //   // TODO: Handle successful login
-    // } catch (error) {
-    //   console.error(error);
-    // }
-  };
-
+  const handleFacebook = async () => {};
+  if (otpInterface) {
+    return (
+      <OptInterface
+        setOtpInterface={setOtpInterface}
+        setForgetPassword={setForgetPassword}
+        emal={email}
+      />
+    );
+  }
   return (
     <div className="  bg-blue-200 inset-0 h-screen bg-opacity-50 flex items-center justify-center">
       <div className="bg-white  min-w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 rounded-lg p-4">
@@ -180,7 +208,7 @@ const Login2 = () => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="email"
             >
-              Email
+              {forgetPassword ? 'Enter Your Email' : ' Email'}
             </label>
             <input
               className={`border border-gray-400 rounded-lg p-2 w-full `}
@@ -192,41 +220,65 @@ const Login2 = () => {
               onChange={handleEmailChange}
             />
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className={`border border-gray-400 p-2 rounded-lg w-full`}
-              id="password"
-              name="password"
-              type="password"
-              required
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            >
-              {loading && (
-                <span>
-                  <BounceSpinners />
-                </span>
-              )}
-              {!loading && <span>Log In</span>}
-            </button>
-          </div>
+          {!forgetPassword && (
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                className={`border border-gray-400 p-2 rounded-lg w-full`}
+                id="password"
+                name="password"
+                type="password"
+                required
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+          )}
+          {!forgetPassword && (
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              >
+                {loading && (
+                  <span>
+                    <BounceSpinners />
+                  </span>
+                )}
+                {!loading && <span>{' Log In'}</span>}
+              </button>
+            </div>
+          )}
         </form>
+
         {/* <span className="flex justify-center text-xl font-bold items-center">
           Or{' '}
         </span> */}
         <div className="flex mt-2 justify-center sm:gap-1 gap-2">
+          {!forgetPassword && (
+            <button
+              onClick={handleForgotPasswordClick}
+              className="bg-gray-200 text-blue-500 font-bold py-2 px-4 rounded mb-4"
+            >
+              {'Forgot Password'}
+            </button>
+          )}
+          {forgetPassword && (
+            <button
+              onClick={handleResetPasswordClick}
+              className={`${
+                loading ? ' bg-blue-500 ' : ' bg-gray-200 '
+              } text-blue-500 font-bold py-2 px-4 rounded mb-4`}
+            >
+              {loading ? <BounceSpinners /> : 'Reset Password'}
+            </button>
+          )}
+
           {/* <button
             onClick={handleGoogle}
             className="bg-red-500 hover:bg-red-700 md:text-sm whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4"

@@ -16,7 +16,7 @@ const UpcomingCourses = () => {
       'Nishant Phuyal',
       'Whole A+ Team',
     ],
-    image: '/banner.jpg',
+    image: '/banner.jpeg',
     description:
       'Join this comprehensive computer science and technology course to gain mastery from the fundamentals to industry insights. Discover the diverse domains of computer science, theory and foundational subjects, programming language selection, company creation and operation, startup strategies, software development, competitive programming, JavaScript essentials, open-source contribution, hiring processes, global opportunities, freelancing, cybersecurity, and much more. Learn from experienced instructors and industry professionals, and unleash your potential in the world of computer science and technology.',
 
@@ -47,7 +47,7 @@ const UpcomingCourses = () => {
   };
 
   return (
-    <div id="upcoming-courses ">
+    <div id="upcoming-courses">
       <h1 className="text-3xl ms-8 font-semibold my-2 mx-4">
         Our Upcoming Courses
       </h1>

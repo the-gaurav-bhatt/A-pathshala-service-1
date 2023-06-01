@@ -24,7 +24,7 @@ const CourseTeachers = () => {
         'ASA',
         'SD-WAN',
       ],
-      image: '/profiles/jiwan.png',
+      image: '/profiles/jiwan.jpeg',
     },
     {
       name: 'Nishant Phuyal',
@@ -39,7 +39,7 @@ const CourseTeachers = () => {
       position: 'Co-Founder and CEO',
       company: 'ReflexIT Solution',
       qualifications: ['Software Engineer', 'Project Manager'],
-      image: '/profiles/nishant.png',
+      image: '/profiles/nishant.jpeg',
     },
     {
       name: 'Bishworaj Poudel',
@@ -53,7 +53,7 @@ const CourseTeachers = () => {
       ],
       position: 'Youtuber | Mobile App Developer',
       qualifications: ['Flutter Developer', 'YouTuber (260k+ subs)'],
-      image: '/profiles/bishworaj.png',
+      image: '/profiles/bishworaj.jpeg',
     },
     {
       name: 'Prince Singh',
@@ -67,7 +67,7 @@ const CourseTeachers = () => {
           url: 'https://www.linkedin.com/in/prince-singh-314a65187/',
         },
       ],
-      image: '/profiles/prince.png',
+      image: '/profiles/prince.jpeg',
     },
     {
       name: 'Biplop Karki',
@@ -81,7 +81,7 @@ const CourseTeachers = () => {
       ],
       position: 'Freelance Developer | CTO at ClampHook',
       qualifications: ['Entrepreneur', 'CTO at ClampHook', 'CEO at Hyperse'],
-      image: '/profiles/biplop.png',
+      image: '/profiles/biplop.jpeg',
     },
     {
       name: 'Dilli Raj Timalsina',

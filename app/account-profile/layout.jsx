@@ -5,7 +5,7 @@ const layout = ({ children }) => {
     <section className="flex  ">
       <SideBar />
 
-      <div className="bg-slate-50 flex-grow">{children}</div>
+      <div className="bg-blue-50 flex-grow">{children}</div>
     </section>
   );
 };

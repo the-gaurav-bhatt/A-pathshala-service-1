@@ -3,7 +3,6 @@ import { userContext } from '@/app/layout';
 import React from 'react';
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
-import UpcomingCourses from '@/app/components/courses/UpcomingCourses/UpcomingCourses';
 const Page = () => {
   const { user } = useContext(userContext);
   const router = useRouter();
@@ -21,7 +20,7 @@ const Page = () => {
     );
   }
   const handleEnroll = () => {
-    router.push('account-profile/purchase');
+    router.push('/account-profile/purchase');
   };
   const handleJoinSession = (id) => {
     // router.push(`account-profile/join-session/${id}`);
@@ -85,7 +84,9 @@ const Page = () => {
             <div className="bg-white rounded-lg shadow-lg p-6">
               <p className="text-lg font-bold mb-4">ENROLLED COURSES</p>
               <div className="flex items-center justify-center">
-                <p className="text-4xl font-bold text-blue-500">0</p>
+                <p className="text-4xl font-bold text-blue-500">
+                  {user.haveEnrolled ? '1' : '0'}
+                </p>
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
@@ -100,9 +101,9 @@ const Page = () => {
         </div>
       </div>
       <div className="">
-        {enrolledCourses && (
+        {user.haveEnrolled && (
           <div className="my-8">
-            <h2 className="text-2xl lg:px-8 font-bold">Enrolled Courses</h2>
+            <h2 className="text-2xl lg:px-8 font-bold">Enrolled Course</h2>
             <div className="grid gap-4">
               {enrolledCourses.map((course) => (
                 <div
@@ -142,6 +143,7 @@ const Page = () => {
             </div>
           </div>
         )}
+        <h2 className="text-2xl lg:px-8 font-bold">Available Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courses.map((course) => (
             <div
@@ -150,21 +152,13 @@ const Page = () => {
             >
               <h3 className="text-lg font-bold mb-2">{course.name}</h3>
               <p className="text-gray-500 mb-4">Rs {course.price}</p>
-              {course.enrolled ? (
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-                  disabled
-                >
-                  ENROLLED
-                </button>
-              ) : (
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-                  onClick={() => handleEnroll(course.id)}
-                >
-                  ENROLL NOW
-                </button>
-              )}
+
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                onClick={() => handleEnroll(course.id)}
+              >
+                ENROLL NOW
+              </button>
             </div>
           ))}
         </div>
