@@ -2,7 +2,7 @@ export const metadata = {
   title: 'A+ Pathshala',
   description: 'This Platform Empowers Individual Teachers ',
   icons: {
-    icon: '/icon.svg',
+    icon: '/logo.png',
   },
 };
 import React, { Suspense } from 'react';
@@ -11,7 +11,6 @@ import UpcomingCourses from './components/courses/UpcomingCourses/UpcomingCourse
 import FeatureList from './components/courses/UpcomingCourses/FeaturedList';
 import Hero1 from './components/hero/Hero1';
 
-import SuccessMessage from './components/spinners/SuccessMessage';
 export default function Home() {
   return (
     <Suspense fallback={<ProfileSpinner />}>

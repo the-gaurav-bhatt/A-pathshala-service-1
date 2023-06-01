@@ -72,7 +72,31 @@ const features = [
   },
   {
     id: 5,
-    icon: <svg>...</svg>,
+    icon: (
+      <svg
+        className="svg-icon"
+        style={{
+          verticalAlign: 'middle',
+        }}
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        overflow="hidden"
+      >
+        <path
+          d="M512 597.333L335.36 446.72l-51.2 61.013 233.387 191.574L755.2 406.613l-53.76-43.52L512 597.333z"
+          fill="#0FF"
+        />
+        <path
+          d="M512 128a384 384 0 10384 384 384 384 0 00-384-384zm0 725.333A341.333 341.333 0 11853.333 512 341.333 341.333 0 01512 853.333z"
+          fill="#00F"
+        />
+        <path
+          d="M687.36 349.013l-178.773 218.88-175.36-136.533a21.333 21.333 0 10-26.454 33.28l192 149.333A19.2 19.2 0 00512 618.667a21.76 21.76 0 0016.64-7.68l192-234.667a21.333 21.333 0 00-33.28-27.307z"
+          fill="#00F"
+        />
+      </svg>
+    ),
     title: 'Flexible scheduling',
     description:
       'Our courses are self-paced, so you can learn on your own schedule and at your own speed.',

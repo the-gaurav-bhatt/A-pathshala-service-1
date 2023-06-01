@@ -1,9 +1,9 @@
 'use client';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
+import Head from 'next/head';
 import SuccessMessage from './components/spinners/SuccessMessage';
 import './globals.css';
-// import { Metamedata } from 'next';
 import { Source_Sans_Pro } from 'next/font/google';
 // import { registerLicense } from '@syncfusion/ej2-base';
 // registerLicense(

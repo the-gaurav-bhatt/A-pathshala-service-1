@@ -4,20 +4,6 @@ const inter = Inter({ subsets: ['latin'] });
 const CourseTeachers = () => {
   const team = [
     {
-      name: 'Prince Singh',
-      position: "India's top 1 Rank at Coding Ninjas ",
-      intro:
-        'Introducing Prince Singh, a coding prodigy with Institute Rank 1 and Global Rank 111 at Gfg. He also holds All India Rank 1 at Coding Ninjas and Global Rank 13 at Interview Bit, showcasing his exceptional skills and expertise in programming and problem-solving.',
-
-      socialMedia: [
-        {
-          platform: 'LinkedIn',
-          url: 'https://www.linkedin.com/in/prince-singh-314a65187/',
-        },
-      ],
-      image: '/prince.jpg',
-    },
-    {
       name: 'Jiwan Bhattarai',
       intro:
         'He is an experienced network security engineer with 10+ years of industry experience and expertise in various certifications such as CCIE #60261, CCNA, CCNP Security, CEH, Cisco FTD, ISE, ASA, and SD-WAN. He excels in ensuring secure network infrastructures.',
@@ -38,7 +24,7 @@ const CourseTeachers = () => {
         'ASA',
         'SD-WAN',
       ],
-      image: '/jiwan.jpg',
+      image: '/profiles/jiwan.png',
     },
     {
       name: 'Nishant Phuyal',
@@ -53,7 +39,7 @@ const CourseTeachers = () => {
       position: 'Co-Founder and CEO',
       company: 'ReflexIT Solution',
       qualifications: ['Software Engineer', 'Project Manager'],
-      image: '/Nishant.jpg',
+      image: '/profiles/nishant.png',
     },
     {
       name: 'Bishworaj Poudel',
@@ -67,7 +53,21 @@ const CourseTeachers = () => {
       ],
       position: 'Youtuber | Mobile App Developer',
       qualifications: ['Flutter Developer', 'YouTuber (260k+ subs)'],
-      image: '/bishworaj.jpg',
+      image: '/profiles/bishworaj.png',
+    },
+    {
+      name: 'Prince Singh',
+      position: "India's top 1 Rank at Coding Ninjas ",
+      intro:
+        'Introducing Prince Singh, a coding prodigy with Institute Rank 1 and Global Rank 111 at Gfg. He also holds All India Rank 1 at Coding Ninjas and Global Rank 13 at Interview Bit, showcasing his exceptional skills and expertise in programming and problem-solving.',
+
+      socialMedia: [
+        {
+          platform: 'LinkedIn',
+          url: 'https://www.linkedin.com/in/prince-singh-314a65187/',
+        },
+      ],
+      image: '/profiles/prince.png',
     },
     {
       name: 'Biplop Karki',
@@ -81,7 +81,7 @@ const CourseTeachers = () => {
       ],
       position: 'Freelance Developer | CTO at ClampHook',
       qualifications: ['Entrepreneur', 'CTO at ClampHook', 'CEO at Hyperse'],
-      image: '/Biplop.jpeg',
+      image: '/profiles/biplop.png',
     },
     {
       name: 'Dilli Raj Timalsina',
@@ -161,7 +161,7 @@ const CourseTeachers = () => {
           >
             <div className="flex items-center gap-x-4">
               <img
-                className="rounded-full w-20 h-20"
+                className="rounded-full w-24 h-24"
                 src={member.image}
                 alt="Image Description"
               />
