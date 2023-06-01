@@ -1,9 +1,7 @@
 'use client';
-import Header from '@/app/components/checkoutSection/CheckoutHeader';
 
 import CheckoutSummary from '@/app/components/checkoutSection/CourseSummary';
 import CheckoutPage1 from '@/app/components/checkoutSection/Payment1';
-import CheckoutForm from '@/app/components/checkoutSection/PaymentSection';
 import { userContext } from '@/app/layout';
 import { useRouter } from 'next/navigation';
 import React, { useContext } from 'react';
