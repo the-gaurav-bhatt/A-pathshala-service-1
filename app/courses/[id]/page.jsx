@@ -36,6 +36,9 @@ async function CourseDetail({ params }) {
             <div className="my-4  grid grid-cols-3" id="description">
               <div className=" col-span-3 lg:col-span-2">
                 <p className={inter.className}>
+                  <span className="font-bold text-green-500">
+                    {`(Enroll and Activate Your A+ Score) `}
+                  </span>
                   Participating in the A+ Pathshala program include gaining a
                   strong foundation in computer science and technology,
                   exploring various career options, learning essential theory
@@ -83,7 +86,7 @@ async function CourseDetail({ params }) {
 
 export default CourseDetail;
 const course = {
-  name: 'Ignite Your Career with a 15-Day Computer Science Bootcamp',
+  title: 'Kickstart Your Journey on Tech with a 15-Day Bootcamp',
   rating: '',
   teachers: [
     'Dilli Raj Timalsina',
@@ -141,7 +144,7 @@ const course = {
         'I really enjoyed this course and learned a lot. The instructor was engaging and the content was well-organized. I appreciated the emphasis on responsive web design and the use of frameworks like React and Vue. Would definitely recommend!',
     },
   ],
-  price: '1000',
+  price: '650',
   duration: '15 days',
   level: 'Beginner',
 };

@@ -4,8 +4,7 @@ import CourseTeachers from '../../courseConsume/CourseTeacher1';
 
 const UpcomingCourses = () => {
   const course = {
-    title:
-      'Mastering Computer Science and Technology: From Fundamentals to Industry Insights',
+    title: '15 Day Bootcamp on Tech Industry - From Beginner to Intermediate',
     rating: '',
     teachers: [
       'Dilli Raj Timalsina',
@@ -41,7 +40,7 @@ const UpcomingCourses = () => {
       'And much more!',
     ],
 
-    price: ' 800',
+    price: '650',
     duration: '15 Days',
     level: 'Beginner',
   };

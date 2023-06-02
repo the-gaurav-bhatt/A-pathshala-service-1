@@ -78,7 +78,10 @@ const Page = () => {
             <div className="bg-white rounded-lg shadow-lg p-6">
               <p className="text-lg font-bold mb-4">A+ SCORE</p>
               <div className="flex items-center justify-center">
-                <p className="text-4xl font-bold text-blue-500">10</p>
+                <p className="text-4xl font-bold text-blue-500">
+                  {' '}
+                  {user.haveEnrolled ? '10' : '0'}
+                </p>
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
@@ -143,7 +146,7 @@ const Page = () => {
             </div>
           </div>
         )}
-        <h2 className="text-2xl lg:px-8 font-bold">Available Courses</h2>
+        {/* <h2 className="text-2xl lg:px-8 font-bold">Available Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courses.map((course) => (
             <div
@@ -161,7 +164,7 @@ const Page = () => {
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -140,25 +140,45 @@ const HomePage = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="py-4 px-6 border-b border-gray-200">300+</td>
                 <td className="py-4 px-6 border-b border-gray-200">
-                  ₹30,000/month
+                  {'>=100'}
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">₹6 LPA</td>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  Fixed within 3 months
+                </td>
+                <td className="py-4 px-6 border-b border-gray-200">-</td>
               </tr>
               <tr>
-                <td className="py-4 px-6 border-b border-gray-200">350+</td>
                 <td className="py-4 px-6 border-b border-gray-200">
-                  ₹40,000/month
+                  {' '}
+                  {'>=150'}
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">₹8 LPA</td>
+                <td className="py-4 px-6 border-b border-gray-200">-</td>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  Within 5 months ₹100,000/month
+                </td>
               </tr>
               <tr>
-                <td className="py-4 px-6 border-b border-gray-200">400+</td>
                 <td className="py-4 px-6 border-b border-gray-200">
-                  ₹50,000/month
+                  {' '}
+                  {'>=300'}
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">₹12 LPA</td>
+                <td className="py-4 px-6 border-b border-gray-200">-</td>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  {' '}
+                  Within 5 months ₹200,000/month
+                </td>
+              </tr>
+              <tr>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  {' '}
+                  {'>=400'}
+                </td>
+                <td className="py-4 px-6 border-b border-gray-200">-</td>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  {' '}
+                  Job at FAANGM* Company
+                </td>
               </tr>
             </tbody>
           </table>
@@ -210,7 +230,7 @@ const HomePage = () => {
             program and unlock your potential.
           </p>
           <a
-            href="/enrollment"
+            href="/courses/1"
             className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200"
           >
             Enroll Now

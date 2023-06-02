@@ -5,10 +5,10 @@ const CheckoutSummary = () => {
   const [items, setItems] = useState([
     {
       id: 1,
-      title: 'Unveal the Hidden Truth of Tech Industry In Our 15 Days Bootcamp',
+      title: '15 Day Bootcamp on Tech Industry - From Beginner to Intermediate',
       instructor: 'Beginner to Intermediate',
-      image: '/a.png',
-      price: 500,
+      image: '/banner.jpeg',
+      price: 650,
     },
   ]);
   const handleRemove = (id) => {
@@ -22,26 +22,24 @@ const CheckoutSummary = () => {
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold text-gray-800">Order Summary</h2>
         </div>
-        <div className={` mt-4 border bg-white shadow-md `}>
+        <div className={` mt-4 border w-1/2 px-2 bg-white shadow-md `}>
           {items.map((item) => (
             <div
               key={item.id}
-              className="flex py-3 justify-around items-center mb-2"
+              className="flex py-3 justify-around  items-center mb-2"
             >
-              <div className="flex items-center space-x-4">
+              <div className=" space-x-4">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-12 h-12 object-cover rounded"
+                  className="w-fit object-cover rounded"
                 />
                 <div>
                   <h3 className="text-gray-800 font-semibold">{item.title}</h3>
                   <p className="text-gray-600">{item.instructor}</p>
                 </div>
               </div>
-              <p className="text-gray-800 font-semibold">
-                Rs {item.price.toFixed(2)}
-              </p>
+
               {/* <button
                 onClick={() => handleRemove(item.id)}
                 className="font-bold  text-3xl text-red-600"

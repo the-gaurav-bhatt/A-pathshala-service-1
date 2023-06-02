@@ -25,7 +25,7 @@ const CourseContent = () => {
         {sections.map((section) => (
           <div
             key={section.id}
-            className="py-4 bg-pink-100/20 justify-center items-center ps-4 p-0 md:px-2 rounded-md"
+            className="py-4 bg-blue-50 border-b justify-center items-center ps-4 p-0 md:px-2 rounded-md"
           >
             <div
               className="flex items-center px-4 justify-between cursor-pointer"

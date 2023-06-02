@@ -13,7 +13,7 @@ const sora = Sora({
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="bg-gradient-to-r from-blue-300 to-purple-300 rounded-lg shadow-lg w-full md:w-1/2   overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+    <div className="bg-gradient-to-r from-blue-200 to-purple-200 rounded-lg shadow-lg w-full md:w-1/2   overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
       <img
         src={course.image}
         alt={course.title}
@@ -38,14 +38,14 @@ const CourseCard = ({ course }) => {
           </h2>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-black flex items-center">
+          {/* <p className="text-black flex items-center">
             <Image src={'/star.svg'} height={20} width={20} alt="stars" />
             {4.5}
             <span className="text-neutral-500">
               {`(${course.totalStudent ? course.totalStudent : '1000'})`}
             </span>
-          </p>
-          <div className="text-gray-600 whitespace-nowrap text-lg font-medium">
+          </p> */}
+          <div className="text-black font-bold whitespace-nowrap text-lg">
             Rs {course.price}
           </div>
         </div>
@@ -58,7 +58,7 @@ const CourseCard = ({ course }) => {
           </Link>
 
           <Link
-            href={'/account-profile/purchase?courseId=1'}
+            href={'/account-profile/purchase'}
             className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-semibold py-2 px-4 mt-4 rounded transition duration-200"
           >
             Buy Now

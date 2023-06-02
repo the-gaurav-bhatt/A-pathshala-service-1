@@ -22,18 +22,17 @@ const Hero1 = () => {
 
               <div class="mt-5 max-w-2xl">
                 <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl ">
-                  Unlock Your Potential with Our Cutting-Edge Courses
+                  Bridging the gap between Global Tech Industry and Nepal
                 </h1>
               </div>
 
               <div class="mt-5 max-w-3xl">
                 <p class="text-lg  text-gray-600 ">
-                  At A+ Pathshala, we believe in empowering minds and inspiring
-                  excellence. As a leading education provider, we are committed
-                  to nurturing the potential within each learner, helping them
-                  achieve success and personal growth. Our comprehensive
-                  curriculum, delivered by expert educators, ensures a holistic
-                  learning experience that goes beyond textbooks.
+                  From Beginner, till You land your first Dream Job, Join us In
+                  the Journey of Change. Learn from the Industry Experts and
+                  Let's change the trend of going Australia to wash dish instead
+                  earn equal or more by joing A+ pathshala. We provide you the
+                  best learning experience with the best teachers and mentors.
                 </p>
               </div>
 
