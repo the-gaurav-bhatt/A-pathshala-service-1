@@ -30,9 +30,10 @@ const Hero1 = () => {
                 <p class="text-lg  text-gray-600 ">
                   From Beginner, till You land your first Dream Job, Join us In
                   the Journey of Change. Learn from the Industry Experts and
-                  Let's change the trend of going Australia to wash dish instead
-                  earn equal or more by joing A+ pathshala. We provide you the
-                  best learning experience with the best teachers and mentors.
+                  Let&epos;s change the trend of going Australia to wash dish
+                  instead earn equal or more by joing A+ pathshala. We provide
+                  you the best learning experience with the best teachers and
+                  mentors.
                 </p>
               </div>
 

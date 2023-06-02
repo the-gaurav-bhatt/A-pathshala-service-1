@@ -3,7 +3,7 @@ import React from 'react';
 import SideBar from '../components/profileSection/SideBar';
 import { useContext } from 'react';
 import { userContext } from '../layout';
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
   const { user } = useContext(userContext);
   if (!user?._id) {
     return (
@@ -28,4 +28,4 @@ const layout = ({ children }) => {
   }
 };
 
-export default layout;
+export default Layout;
