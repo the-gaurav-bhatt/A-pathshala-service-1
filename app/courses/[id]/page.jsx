@@ -36,7 +36,7 @@ async function CourseDetail({ params }) {
             <div className="my-4  grid grid-cols-3" id="description">
               <div className=" col-span-3 lg:col-span-2">
                 <p className={inter.className}>
-                  <span className="font-bold text-green-500">
+                  <span className="font-bold text-sm md:text-base text-green-500">
                     {`(Enroll and Activate Your A+ Score) `}
                   </span>
                   Participating in the A+ Pathshala program include gaining a
@@ -57,19 +57,12 @@ async function CourseDetail({ params }) {
                 </p>
                 <CourseContent />
               </div>
-              <div className=" w-screen lg:w-fit">
+              <div className=" w-screen md:w-full">
                 <Checkout course={course} />
               </div>
             </div>
             <CourseTeachers />
-            {/* <div className="my-4" id="syllabus">
-              <h3 className="text-2xl font-bold mb-4">Syllabus</h3>
-              <ul>
-                {course.syllabus.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div> */}
+
             <div className="my-4" id="benefits">
               <CourseBenefits course={course} />
             </div>

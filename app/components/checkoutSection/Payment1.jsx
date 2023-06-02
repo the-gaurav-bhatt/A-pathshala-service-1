@@ -3,14 +3,11 @@ import { cookieContext, userContext } from '@/app/layout';
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import BounceSpinners from '../spinners/BounceSpinners';
-import SuccessMessage from '../spinners/SuccessMessage';
 import ErrorMessage from '../spinners/ErrorMessage';
-import ModalActionButton from '../spinners/PopupModel';
 
 const CheckoutPage1 = () => {
   const { cookie } = useContext(cookieContext);
   const { setUser } = useContext(userContext);
-  const [paymentCompleted, setPaymentCompleted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -166,7 +163,7 @@ const CheckoutPage1 = () => {
             <h2 className="text-lg font-bold mb-4">Khalti Transfer</h2>
             <div className="mb-4">
               <p className="font-bold">Khalti ID:</p>
-              <p className="text-black">9843418369</p>
+              <p className="text-black">9861875076</p>
             </div>
             <div>
               <p className="font-bold">Name:</p>
@@ -183,11 +180,11 @@ const CheckoutPage1 = () => {
               <h2 className="text-lg font-bold mb-4">Esewa Transfer</h2>
               <div className="mb-4">
                 <p className="font-bold">eSewa ID:</p>
-                <p className="text-black">9894348324</p>
+                <p className="text-black">9861875076</p>
               </div>
               <div>
                 <p className="font-bold">Name:</p>
-                <p className="text-black">A+ Pathshala</p>
+                <p className="text-black">Sajan Ghimire</p>
               </div>
             </div>
           </div>
@@ -195,15 +192,15 @@ const CheckoutPage1 = () => {
             <h2 className="text-lg font-bold mb-4">Bank A/C Details</h2>
             <div className="mb-4">
               <p className="font-bold">Account No:</p>
-              <p className="text-black">02301020303456</p>
+              <p className="text-black"> 08410017502908</p>
             </div>
             <div className="mb-4">
               <p className="font-bold">Account Name:</p>
-              <p className="text-black">A+ Pathshala</p>
+              <p className="text-black">Sajan Ghimire</p>
             </div>
             <div>
               <p className="font-bold">Bank:</p>
-              <p className="text-black">Nepal Rastriya Bank, New Road</p>
+              <p className="text-black">Nabil Bank</p>
             </div>
           </div>
         </div>

@@ -140,42 +140,50 @@ const HomePage = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="py-4 px-20 border-b border-gray-200">
+                <td className="py-4 px-20 font-bold border-b border-black">
                   {'>=100'}
                 </td>
-                <td className="py-4 px-20 border-b border-gray-200">
+                <td className="py-4 px-20 font-bold border-b border-black">
                   Fixed within 3 months
                 </td>
-                <td className="py-4 px-20 border-b border-gray-200">-</td>
+                <td className="py-4 px-20 font-bold border-b border-black">
+                  -
+                </td>
               </tr>
               <tr>
-                <td className="py-4 px-20 border-b border-gray-200">
+                <td className="py-4 px-20 font-bold border-b border-black">
                   {' '}
-                  {'>=150'}
+                  {'>=175'}
                 </td>
-                <td className="py-4 px-20 border-b border-gray-200">-</td>
-                <td className="py-4 px-20 border-b border-gray-200">
-                  Within 5 months ₹100,000/month
+                <td className="py-4 px-20 font-bold border-b border-black">
+                  -
+                </td>
+                <td className="py-4 px-20 font-bold border-b border-black">
+                  Within 5 months ₹12,00,000/year
                 </td>
               </tr>
               <tr>
-                <td className="py-4 px-20 border-b border-gray-200">
+                <td className="py-4 px-20 font-bold border-b border-black">
                   {' '}
                   {'>=300'}
                 </td>
-                <td className="py-4 px-20 border-b border-gray-200">-</td>
-                <td className="py-4 px-20 border-b border-gray-200">
+                <td className="py-4 px-20 font-bold border-b border-black">
+                  -
+                </td>
+                <td className="py-4 px-20 font-bold border-b border-black">
                   {' '}
-                  Within 5 months ₹200,000/month
+                  Within 5 months ₹24,00,000/year
                 </td>
               </tr>
               <tr>
-                <td className="py-4 px-20 border-b border-gray-200">
+                <td className="py-4 px-20 font-bold border-b border-black">
                   {' '}
                   {'>=400'}
                 </td>
-                <td className="py-4 px-20 border-b border-gray-200">-</td>
-                <td className="py-4 px-20 border-b border-gray-200">
+                <td className="py-4 px-20 font-bold border-b border-black">
+                  -
+                </td>
+                <td className="py-4 px-20 font-bold border-b border-black">
                   {' '}
                   Job at FAANGM* Company
                 </td>

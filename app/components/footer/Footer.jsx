@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center">
           <div className="w-full lg:w-1/4 md:w-1/2 px-4">
             <h2 className="text-lg text-white font-semibold mb-4">About Us</h2>
-            <p className="text-gray-200">
-              With a vision to bring big tech giants in Nepal
+            <p className="text-gray-200 text-sm">
+              A team With a vision to bring big tech giants in Nepal
             </p>
           </div>
           <div className="w-full lg:w-1/4 md:w-1/2 px-4">
@@ -27,16 +27,21 @@ const Footer = () => {
           </div>
           <div className="w-full lg:w-1/4 md:w-1/2 px-4">
             <h2 className="text-lg text-white font-semibold mb-4">Contact</h2>
-            <p className="text-gray-200">Mahadevsthan, Koteshwar, Kathmandu</p>
+            <p className="text-gray-200">Koteshwar, Kathmandu, Nepal</p>
             <p className="text-gray-200">Email: apluspathshala@gmail.com</p>
-            <p className="text-gray-200">Phone: 9861875076 </p>
+            <p className="text-gray-200">Phone: 9861875076</p>
+            <p className="text-gray-200">Phone: 9746660482</p>
           </div>
           <div className="w-full lg:w-1/4 md:w-1/2 px-4">
             <h2 className="text-lg text-white font-semibold mb-4">
               Social Media
             </h2>
             <div className="flex space-x-4">
-              <Link href="#" className="text-gray-200 hover:text-white">
+              <Link
+                target="_blank"
+                href="https://youtube.com/@APlusPathshala"
+                className="text-gray-200 hover:text-white"
+              >
                 <svg
                   className="w-10 h-10"
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +78,10 @@ const Footer = () => {
                   ></path>
                 </svg>
               </Link>
-              <Link href="#" className="text-gray-200 hover:text-white">
+              <Link
+                href="https://twitter.com/apluspathshala?t=ZimoXW8ldcF2rKxgYUOTSg&s=09"
+                className="text-gray-200 hover:text-white"
+              >
                 <svg
                   className="w-10 h-10"
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +101,10 @@ const Footer = () => {
                   </g>
                 </svg>
               </Link>
-              <Link href="#" className="text-gray-200 hover:text-white">
+              <Link
+                href="https://www.facebook.com/apluspathshala?mibextid=ZbWKwL"
+                className="text-gray-200 hover:text-white"
+              >
                 <svg
                   className="w-10 h-10"
                   xmlns="http://www.w3.org/2000/svg"
