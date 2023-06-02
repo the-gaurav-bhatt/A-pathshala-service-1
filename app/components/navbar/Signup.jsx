@@ -46,6 +46,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    console.log('Singup clicked');
 
     try {
       const response = await fetch(
@@ -73,14 +74,13 @@ const Signup = () => {
         router.back();
       } else {
         setLoading(false);
+        setError(true);
         throw new Error(await response.json());
       }
     } catch (error) {
       setLoading(false);
 
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -90,6 +90,7 @@ const Signup = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    setError(false);
   };
 
   const handlePasswordChange = (e) => {
@@ -192,7 +193,10 @@ const Signup = () => {
               onChange={handleEmailChange}
             />
             {email && !isEmailValid() && (
-              <p className="text-red-500 mt-1">Invalid email address</p>
+              <p className="text-red-500 text-sm mt-1">Invalid email address</p>
+            )}
+            {error && (
+              <p className="text-red-500 text-sm mt-1">Email already exist !</p>
             )}
           </div>
           <div className="mb-4">

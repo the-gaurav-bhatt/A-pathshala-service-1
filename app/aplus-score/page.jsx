@@ -140,42 +140,42 @@ const HomePage = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">
                   {'>=100'}
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">
                   Fixed within 3 months
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">-</td>
+                <td className="py-4 px-20 border-b border-gray-200">-</td>
               </tr>
               <tr>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">
                   {' '}
                   {'>=150'}
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">-</td>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">-</td>
+                <td className="py-4 px-20 border-b border-gray-200">
                   Within 5 months ₹100,000/month
                 </td>
               </tr>
               <tr>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">
                   {' '}
                   {'>=300'}
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">-</td>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">-</td>
+                <td className="py-4 px-20 border-b border-gray-200">
                   {' '}
                   Within 5 months ₹200,000/month
                 </td>
               </tr>
               <tr>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">
                   {' '}
                   {'>=400'}
                 </td>
-                <td className="py-4 px-6 border-b border-gray-200">-</td>
-                <td className="py-4 px-6 border-b border-gray-200">
+                <td className="py-4 px-20 border-b border-gray-200">-</td>
+                <td className="py-4 px-20 border-b border-gray-200">
                   {' '}
                   Job at FAANGM* Company
                 </td>
