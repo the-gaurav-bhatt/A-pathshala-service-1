@@ -31,7 +31,7 @@ const Page = () => {
       id: 1,
       name: '15 Day Bootcamp on Tech Industry',
       instructor: 'Beginner to Intermediate',
-      image: '/80005460.webp',
+      image: '/banner.jpeg',
       upcomingSession: 'June 15th, 2023 - 08:00 PM',
     },
   ];

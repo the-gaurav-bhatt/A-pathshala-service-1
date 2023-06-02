@@ -8,7 +8,7 @@ import {
 import { IoIosRocket } from 'react-icons/io';
 const HomePage = () => {
   return (
-    <div>
+    <div className="w-[100vw]">
       <header className="bg-blue-500 py-6 text-white text-center">
         <h1 className="text-4xl font-bold">Welcome to A+ Pathshala</h1>
         <p className="mt-4 text-lg">Unlock Your Potential with A+ Score</p>
@@ -57,7 +57,7 @@ const HomePage = () => {
       </section>
 
       <section className="bg-white py-12">
-        <div className="container mx-auto">
+        <div className="md:container mx-auto">
           <h2 className="text-3xl font-semibold text-center mb-8">
             Evaluation Process
           </h2>

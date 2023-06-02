@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
         setLoggedIn(false);
       }, 3000);
     }
-  }, [user]);
+  }, []);
 
   return (
     <html lang="en">

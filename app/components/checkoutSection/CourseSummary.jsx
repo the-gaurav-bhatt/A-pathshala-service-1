@@ -17,12 +17,14 @@ const CheckoutSummary = () => {
   const getTotalPrice = () => items.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <section className="border-b lg:mx-8 md:mx-4 w-1/2 flex items-center justify-center  border-gray-200">
-      <div className="container mx-auto  py-4">
+    <section className="border-b lg:mx-8 md:mx-4 w-full lg:w-1/2 flex items-center justify-center  border-gray-200">
+      <div className="lg:container mx-auto  py-4">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold text-gray-800">Order Summary</h2>
         </div>
-        <div className={` mt-4 border w-1/2 px-2 bg-white shadow-md `}>
+        <div
+          className={` mt-4 border px-2  md:w-1/2 md:px-2 bg-white shadow-md `}
+        >
           {items.map((item) => (
             <div
               key={item.id}

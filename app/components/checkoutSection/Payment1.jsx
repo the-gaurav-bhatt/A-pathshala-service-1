@@ -5,6 +5,7 @@ import React, { useContext, useState } from 'react';
 import BounceSpinners from '../spinners/BounceSpinners';
 import SuccessMessage from '../spinners/SuccessMessage';
 import ErrorMessage from '../spinners/ErrorMessage';
+import ModalActionButton from '../spinners/PopupModel';
 
 const CheckoutPage1 = () => {
   const { cookie } = useContext(cookieContext);
@@ -32,6 +33,7 @@ const CheckoutPage1 = () => {
   };
 
   const handleFormSubmit = async (e) => {
+    console.log(cookie);
     e.preventDefault();
     formData.append('name', formdata.name);
     formData.append('email', formdata.email);
@@ -48,30 +50,26 @@ const CheckoutPage1 = () => {
           },
         }
       );
-
-      console.log(res.data.userProfile);
+      // const data = await res.json();
+      // console.log(data);
       if (res.status === 200) {
-        setUser(res.data.userProfile);
-        console.log(res.data.userProfile);
+        // console.log(res.data.userProfile);
         setIsSubmitting(false);
         setSuccess(true);
-
-        setTimeout(() => {
-          setSuccess(false);
-        }, 5000);
+        setUser(res.data.userProfile);
       } else {
-        setError(true);
-        setTimeout(() => {
-          setError(false);
-        }, 5000);
         setIsSubmitting(false);
+        throw new Error(res.data);
       }
     } catch (err) {
+      setIsSubmitting(false);
       setError(true);
       setTimeout(() => {
         setError(false);
       }, 5000);
       console.log(err);
+      setIsSubmitting(false);
+    } finally {
       setIsSubmitting(false);
     }
     // Perform any necessary actions with the form data
@@ -82,14 +80,10 @@ const CheckoutPage1 = () => {
   return (
     <>
       <h1 className="text-2xl font-bold mb-4">Payment Information</h1>
-      {success && (
-        <SuccessMessage
-          message={'Your Reciept Is under Review. We will Get Back to You Soon'}
-        />
-      )}{' '}
+
       {error && (
         <ErrorMessage
-          message={'Your Reciept Is under Review. We will Get Back to You Soon'}
+          message={'Something Went Wrong ! Please try again later.'}
         />
       )}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
