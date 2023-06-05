@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
   const [user, setUser] = useState({});
   const [cookie, setCookie] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
+
   useEffect(() => {
     if (user._id) {
       setLoggedIn(true);

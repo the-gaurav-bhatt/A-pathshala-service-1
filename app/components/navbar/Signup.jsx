@@ -50,7 +50,7 @@ const Signup = () => {
 
     try {
       const response = await fetch(
-        'https://a-pathshala-service-2.onrender.com/api/v1/user/signup',
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_SIGNUP,
         {
           method: 'POST',
           headers: {

@@ -25,14 +25,18 @@ const Login2 = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+  // process.env.BACKEND
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     console.log(email, password);
+    console.log(
+      process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_LOGIN
+    );
     try {
       await fetch(
-        'https://a-pathshala-service-2.onrender.com/api/v1/user/login',
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_LOGIN,
         {
           method: 'POST',
           body: JSON.stringify({

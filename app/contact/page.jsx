@@ -37,7 +37,7 @@ const ContactPage = () => {
     console.log(contact);
     try {
       const res = await fetch(
-        'https://a-pathshala-service-2.onrender.com/api/v1/user/contactUs',
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_CONTACT,
         {
           method: 'POST',
           headers: {

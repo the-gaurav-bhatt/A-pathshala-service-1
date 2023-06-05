@@ -39,7 +39,7 @@ const CheckoutPage1 = () => {
     setIsSubmitting(true);
     try {
       const res = await axios.post(
-        'https://a-pathshala-service-2.onrender.com/api/v1/user/verifyPayment',
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_PAYMENT,
         formData,
         {
           headers: {
@@ -69,9 +69,6 @@ const CheckoutPage1 = () => {
     } finally {
       setIsSubmitting(false);
     }
-    // Perform any necessary actions with the form data
-    // For example, send it to your server for processing
-    setPaymentCompleted(true);
   };
 
   return (

@@ -37,9 +37,7 @@ export default function Navbar() {
   };
   const handleLogout = async () => {
     try {
-      const res = await fetch(
-        'https://a-pathshala-service-2.onrender.com/api/v1/student/logout'
-      );
+      const res = await fetch(process.env.BACKEND + process.env.LOGOUT);
       if (res.ok) {
         setIsLoggedIn(false);
         setUser({});
