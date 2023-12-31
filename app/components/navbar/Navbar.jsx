@@ -9,7 +9,8 @@ import { usePathname } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 import Profile from './Profile';
 import { useRouter } from 'next/navigation';
-import { userContext, cookieContext } from '@/app/layout';
+import { userContext } from '@/app/userProvider';
+import { cookieContext } from '@/app/cookieProviders';
 // async function getUserData() {
 //   const res = await fetch(
 //     'https://a-pathshala-service-2.onrender.com/api/v1/student/login'
@@ -83,7 +84,7 @@ export default function Navbar() {
               >
                 {!user?.img ? (
                   <span className="bg-blue-400 text-lg text-white m-2 z-50 flex justify-center items-center h-10 w-10  rounded-full text-center">
-                    {user.name[0]}
+                    {user.name}
                   </span>
                 ) : (
                   <img

@@ -1,6 +1,6 @@
-'use client';
 import Navbar from './components/navbar/Navbar';
 import './globals.css';
+import Providers from './Providers';
 // import { Metamedata } from 'next';
 import { Source_Sans_Pro } from 'next/font/google';
 // import { registerLicense } from '@syncfusion/ej2-base';
@@ -14,31 +14,22 @@ import { Source_Sans_Pro } from 'next/font/google';
 //     icon: '/icon.svg',
 //   },
 // };
-import { createContext, useContext, useState } from 'react';
-// If loading a variable font, you don't need to specify the font weight
 const ssp = Source_Sans_Pro({
   subsets: ['latin'],
   weight: '400',
 });
-// const headingFont = ssp.className;
-export const userContext = createContext({});
-export const cookieContext = createContext({});
 
 export default function RootLayout({ children }) {
-  const [user, setUser] = useState({});
-  const [cookie, setCookie] = useState(null);
   return (
     <html lang="en">
       <body className={ssp.className}>
-        <userContext.Provider value={{ user, setUser }}>
-          <cookieContext.Provider value={{ cookie, setCookie }}>
-            <header>
-              <Navbar />
-            </header>
-            {/* <SkeletonCard /> */}
-            {children}
-          </cookieContext.Provider>
-        </userContext.Provider>
+        <Providers>
+          <header>
+            <Navbar />
+          </header>
+          {/* <SkeletonCard /> */}
+          <body>{children}</body>
+        </Providers>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 import { useState, useContext } from 'react';
 import { courseContext } from '@/app/become-teacher/create-course/page';
 import axios from 'axios';
-import { cookieContext } from '@/app/layout';
+import { cookieContext } from '@/app/cookieProviders';
 const CleanAddSection = ({ section, onChange, onRemove }) => {
   const [progress, setProgress] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);

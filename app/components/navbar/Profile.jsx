@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
+import { userContext } from '@/app/userProvider';
 import Image from 'next/image';
-import { userContext } from '@/app/layout';
 const Profile = ({ data }) => {
   const { user } = useContext(userContext);
   console.log(data);
@@ -8,7 +8,7 @@ const Profile = ({ data }) => {
     <div className="flex flex-grow justify-end">
       {!user?.img ? (
         <span className="bg-blue-400 text-white flex justify-center items-center h-10 w-10  rounded-full text-center">
-          {user.name[0]}
+          {user.name}
         </span>
       ) : (
         <img

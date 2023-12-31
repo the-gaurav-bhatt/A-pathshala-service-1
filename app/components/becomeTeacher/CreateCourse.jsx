@@ -1,7 +1,7 @@
 'use client';
 import React, { useContext } from 'react';
 import Link from 'next/link';
-import { userContext } from '@/app/layout';
+import { userContext } from '@/app/userProvider';
 import { useRouter } from 'next/navigation';
 const CreateCourse = () => {
   const router = useRouter();

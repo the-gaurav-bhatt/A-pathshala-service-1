@@ -1,11 +1,9 @@
 'use client';
 import React, { useContext } from 'react';
-// import Login from './Login';
-// import userContext
+
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 const CallToAction = () => {
-  // const user = useContext(userContext)
   const pathname = usePathname();
   console.log(pathname);
   const linkStyle =

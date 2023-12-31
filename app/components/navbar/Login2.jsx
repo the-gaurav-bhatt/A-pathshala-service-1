@@ -1,20 +1,30 @@
 'use client';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import BounceSpinners from '../spinners/BounceSpinners';
-import { cookieContext, userContext } from '@/app/layout';
+import { userContext } from '@/app/userProvider';
+import OptInterface from './OptInterface';
 const Login2 = () => {
-  // const { setCookie } = useContext(cookieContext);
   const { setUser } = useContext(userContext);
-  const { setCookie, cookie } = useContext(cookieContext);
-  console.log(cookie);
   const [email, setEmail] = useState('');
+  const [otpInterface, setOtpInterface] = useState(false);
+  const [forgetPassword, setForgetPassword] = useState(false);
   const [error, setError] = useState(false);
   const router = useRouter();
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
 
+  useEffect(() => {
+    const name = searchParams.get('name');
+    const _id = searchParams.get('_id');
+    const img = searchParams.get('img');
+    if (name && _id && img) {
+      setUser({ name, img, _id });
+    }
+  }, []);
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -22,39 +32,40 @@ const Login2 = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+  // process.env.BACKEND
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    console.log(email, password);
+
     try {
-      await fetch(
-        'https://a-pathshala-service-2.onrender.com/api/v1/user/login',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-        .then((res) => {
-          return res.json();
+      console.log('Going to fetch login ');
+      fetch(process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_LOGIN, {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      })
+        .then(async (res) => {
+          // console.log(await res.json());
+          return res;
         })
-        .then((data) => {
-          if (data.status === 'success') {
-            setCookie(data.token);
-            console.log(cookie);
-            setUser(data.userProfile);
+        .then(async (data) => {
+          // console.log(data);
+          const newData = await data.json();
+          if (newData.success) {
+            console.log(newData.userProfile);
+            setUser(newData.userProfile);
             router.back();
           } else {
             setLoading(false);
             setError(true);
-            console.log(data);
-            throw new Error(data);
+            // throw new Error(data);
           }
         });
     } catch (error) {
@@ -64,8 +75,43 @@ const Login2 = () => {
     } finally {
       setLoading(false);
     }
-    // router.back();
     // TODO: Handle login with email and password
+  };
+  const handleForgotPasswordClick = () => {
+    setForgetPassword(true);
+  };
+  const handleResetPasswordClick = async () => {
+    console.log(email);
+    setLoading(true);
+
+    try {
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND +
+          process.env.NEXT_PUBLIC_FORGOTPASSWORD,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            email,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      if (data.status === 'success') {
+        setLoading(false);
+        setOtpInterface(true);
+      } else {
+        setLoading(false);
+        setError(true);
+        throw new Error(data);
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   const handleCloseClick = () => {
@@ -74,6 +120,13 @@ const Login2 = () => {
   };
 
   const handleGoogle = async () => {
+    router.push(
+      process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_GOOGLE
+    );
+    // if (data.ok) {
+    //   console.log(data.json());
+    //   router.push('/signup');
+    // }
     // try {
     //   const { code } = await router.push(
     //     'https://accounts.google.com/o/oauth2/v2/auth?' +
@@ -99,26 +152,18 @@ const Login2 = () => {
     // }
   };
 
-  const handleFacebook = async () => {
-    // try {
-    //   const { authResponse } = await new Promise(window.FB.login);
-    //   const response = await fetch('/api/auth/facebook', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ accessToken: authResponse.accessToken }),
-    //   });
-    //   const data = await response.json();
-    //   console.log(data);
-    //   // TODO: Handle successful login
-    // } catch (error) {
-    //   console.error(error);
-    // }
-  };
-
+  const handleFacebook = async () => {};
+  if (otpInterface) {
+    return (
+      <OptInterface
+        setOtpInterface={setOtpInterface}
+        setForgetPassword={setForgetPassword}
+        emal={email}
+      />
+    );
+  }
   return (
-    <div className="fixed inset-0  bg-gray-800 bg-opacity-50 flex items-center justify-center">
+    <div className="  bg-blue-200 inset-0 h-screen bg-opacity-50 flex items-center justify-center">
       <div className="bg-white  min-w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold mb-4">Login</h2>
@@ -181,7 +226,7 @@ const Login2 = () => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="email"
             >
-              Email
+              {forgetPassword ? 'Enter Your Email' : ' Email'}
             </label>
             <input
               className={`border border-gray-400 rounded-lg p-2 w-full `}
@@ -193,41 +238,65 @@ const Login2 = () => {
               onChange={handleEmailChange}
             />
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className={`border border-gray-400 p-2 rounded-lg w-full`}
-              id="password"
-              name="password"
-              type="password"
-              required
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            >
-              {loading && (
-                <span>
-                  <BounceSpinners />
-                </span>
-              )}
-              {!loading && <span>Log In</span>}
-            </button>
-          </div>
+          {!forgetPassword && (
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                className={`border border-gray-400 p-2 rounded-lg w-full`}
+                id="password"
+                name="password"
+                type="password"
+                required
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+          )}
+          {!forgetPassword && (
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              >
+                {loading && (
+                  <span>
+                    <BounceSpinners />
+                  </span>
+                )}
+                {!loading && <span>{' Log In'}</span>}
+              </button>
+            </div>
+          )}
         </form>
-        <span className="flex justify-center text-xl font-bold items-center">
+
+        {/* <span className="flex justify-center text-xl font-bold items-center">
           Or{' '}
-        </span>
+        </span> */}
         <div className="flex mt-2 justify-center sm:gap-1 gap-2">
+          {!forgetPassword && (
+            <button
+              onClick={handleForgotPasswordClick}
+              className="bg-gray-200 text-blue-500 font-bold py-2 px-4 rounded mb-4"
+            >
+              {'Forgot Password'}
+            </button>
+          )}
+          {forgetPassword && (
+            <button
+              onClick={handleResetPasswordClick}
+              className={`${
+                loading ? ' bg-blue-500 ' : ' bg-gray-200 '
+              } text-blue-500 font-bold py-2 px-4 rounded mb-4`}
+            >
+              {loading ? <BounceSpinners /> : 'Reset Password'}
+            </button>
+          )}
+
           <button
             onClick={handleGoogle}
             className="bg-red-500 hover:bg-red-700 md:text-sm whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4"

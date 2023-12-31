@@ -2,126 +2,71 @@
 import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { userContext, cookieContext } from '@/app/layout';
+import { cookieContext } from '@/app/cookieProviders';
+import { userContext } from '@/app/userProvider';
 import BounceSpinners from '../spinners/BounceSpinners';
 const Signup = () => {
-  // const cookieStore = cookies();
-  // const jwt = cookieStore.get('jwt');
-  // console.log(jwt);
+  const [name, setName] = useState('');
   const { setUser } = useContext(userContext);
-  const { setCookie } = useContext(cookieContext);
-  const [error, setError] = useState(false);
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('user');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  const handleClick = () => {
-    router.push('/');
-  };
-  const handleGoogle = async () => {
-    setLoading(true);
-    try {
-      const response = await router.push(
-        'https://a-pathshala-service-2.onrender.com/auth/google',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      console.log(response);
-      const data = await response.json();
-      console.log(data);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      console.log('Hello');
-      // setLoading(false);
-    }
-    // const res = await fetch(
-    //   'https://a-pathshala-service-2.onrender.com/auth/google',
-    //   {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   }
-    // );
-    // const response = await fetch(
-    //   'https://a-pathshala-service-2.onrender.com/auth/google/redirect'
-    // );
-    // const data = await response.json();
-    // console.log(data);
-    // router.push('/');
-  };
-  // const handleFaceBook = () => {
-  //   fetch();
-  // };
-
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch(
-        'https://a-pathshala-service-2.onrender.com/api/v1/user/signup',
+      await fetch(
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_SIGNUP,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            name: username,
-            email: email,
-            password: password,
-            role,
-          }),
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setCookie(data.token);
-        console.log(data);
-        const profileResponse = await fetch(
-          'https://a-pathshala-service-2.onrender.com/api/v1/student/profile',
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              authorization: data.token,
-            },
-            // credentials: 'include',
-          }
-        );
-        console.log(await profileResponse.json());
-        if (profileResponse.ok) {
-          const profileData = await profileResponse.json();
-          console.log('login success' + profileData);
-          setLoading(false);
-          setUser(profileData);
-        }
-        router.back();
-      } else {
-        setLoading(false);
-        setError(true);
-        throw new Error('Something Wend Wrong / signup failed');
-      }
-    } catch (error) {
-      setLoading(false);
+          credentials: 'include',
 
-      console.log(error);
-    } finally {
-      setLoading(false);
+          body: JSON.stringify({ name, email, password, role }),
+        }
+      )
+        .then(async (res) => {
+          // console.log(await res.json());
+          return res;
+        })
+        .then(async (data) => {
+          // console.log(data);
+          const newData = await data.json();
+          if (newData.success) {
+            setLoading(false);
+
+            console.log(newData.userProfile);
+            setUser(newData.userProfile);
+            router.back();
+          } else {
+            setLoading(false);
+            setError(true);
+            // throw new Error(data);
+          }
+        });
+    } catch (err) {
+      console.log(err);
     }
   };
 
+  const handleGoogle = async () => {
+    router.push(
+      process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_GOOGLE
+    );
+  };
+
+  const handleClick = () => {
+    router.push('/');
+  };
+
   const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+    setName(e.target.value);
   };
 
   const handleEmailChange = (e) => {
@@ -194,7 +139,7 @@ const Signup = () => {
               name="username"
               type="text"
               required
-              value={username}
+              value={name}
               onChange={handleUsernameChange}
             />
             <div className="border px-2 inline-flex items-center justify-center ms-6 mt-2 mb-0  rounded">

@@ -10,7 +10,8 @@ import PopularTeachers from './components/courses/PopularTeachers/PopularTeacher
 import Hero from './components/hero/HeroSection';
 import React, { Suspense } from 'react';
 import ProfileSpinner from './components/spinners/ProfileSpinner';
-export default function Home() {
+
+export default function page() {
   return (
     <Suspense fallback={<ProfileSpinner />}>
       <div className="bg-content-white-gradient">
