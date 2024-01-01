@@ -1,11 +1,10 @@
 'use client';
 import { useContext, useState } from 'react';
-import { courseContext } from '@/app/become-teacher/create-course/page';
+import { useRouter } from 'next/navigation';
 // import AddSection from './AddSection';
 import CleanAddSection from './CleanAddSection';
-
-const CourseBuilder = () => {
-  // const { courseId } = useContext(courseContext);
+const CourseBuilder = ({ courseId }) => {
+  const router = useRouter();
   const [sections, setSections] = useState([
     { name: '', title: '', videos: [], materials: [] },
   ]);
@@ -21,6 +20,10 @@ const CourseBuilder = () => {
     const newSections = [...sections];
     newSections[index] = section;
     setSections(newSections);
+  };
+  const handleCourseSave = (e) => {
+    e.preventDefault();
+    router.push('/account-profile/mycourses');
   };
 
   const handleSectionRemove = (index) => {
@@ -46,6 +49,7 @@ const CourseBuilder = () => {
           <div key={index}>
             <CleanAddSection
               section={section}
+              courseId={courseId}
               onChange={(section) => handleSectionChange(index, section)}
               onRemove={() => handleSectionRemove(index)}
             />
@@ -61,7 +65,8 @@ const CourseBuilder = () => {
           </button>
         </div>
         <button
-          type="submit"
+          type="button"
+          onClick={handleCourseSave}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           Save Course

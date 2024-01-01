@@ -5,18 +5,25 @@ import CreateNewCourse from '@/app/components/sections/CreateNewCourse';
 import CourseBuilder from '@/app/components/sections/CourseBuilder';
 export const courseContext = createContext();
 const AddCourse = () => {
+  const [givenCourse, setGivenCourse] = useState({});
   const [courseId, setCourseId] = useState('');
   const [next, setNext] = useState(false);
   return (
     <div>
       <courseContext.Provider value={{ courseId, setCourseId }}>
-        {!next && <CreateNewCourse setNext={setNext} />}
+        {!next && (
+          <CreateNewCourse
+            setCourseId={setCourseId}
+            givenCourse={givenCourse}
+            setNext={setNext}
+          />
+        )}
         {next && (
           <h2 className="text-2xl flex text-center justify-center pt-3 font-bold ">
             Add Sections To This Course
           </h2>
         )}
-        {next && <CourseBuilder />}
+        {next && <CourseBuilder courseId={courseId} />}
         {/* {next && <MultipleSections />} */}
       </courseContext.Provider>
     </div>

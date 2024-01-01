@@ -3,6 +3,7 @@ import { userContext } from '@/app/userProvider';
 import React from 'react';
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
+import CoursesTable from '@/app/components/dashboard/CourseTable';
 const Page = () => {
   const { user } = useContext(userContext);
   const router = useRouter();
@@ -36,34 +37,6 @@ const Page = () => {
     },
   ];
 
-  const courses = [
-    {
-      id: 1,
-      name: '15 Day Bootcamp on Tech Industry',
-      price: 500,
-      enrolled: false,
-      title: '15 Day Bootcamp on Tech Industry',
-      rating: '4.5',
-      teacher: 'Dilli Raj',
-      image: '/80005460.webp',
-      description:
-        'This session will be conducted by popular tech personalities from across the globe who proved their worth and showing their amazing skills. do not miss this golden opportunity which is being offered for free.Register now and mark the date as we are just 1 week away from it to happen',
-      syllabus: [
-        'Introduction to HTML',
-        'Introduction to CSS',
-        'Introduction to JavaScript',
-        'Responsive Web Design',
-        'React Basics',
-        'Vue Basics',
-      ],
-      benefits: [
-        'Learn the basics of web development',
-        'Create responsive web pages',
-        'Use popular frameworks like React and Vue',
-        'Get a solid foundation for a career in web development',
-      ],
-    },
-  ];
   return (
     <div className="flex flex-col flex-grow">
       <div className="py-10">
@@ -103,8 +76,9 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="">
-        {user.haveEnrolled && (
+      <div className="bg-white rounded-lg min-h-screen  shadow-lg m-6">
+        <CoursesTable />
+        {/* {user.haveEnrolled && (
           <div className="my-8">
             <h2 className="text-2xl lg:px-8 font-bold">Enrolled Course</h2>
             <div className="grid gap-4">
@@ -145,7 +119,8 @@ const Page = () => {
               ))}
             </div>
           </div>
-        )}
+        )} */}
+
         {/* <h2 className="text-2xl lg:px-8 font-bold">Available Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courses.map((course) => (

@@ -1,78 +1,63 @@
 'use client';
 import { useState, useContext } from 'react';
-import { courseContext } from '@/app/become-teacher/create-course/page';
-import axios from 'axios';
-import { cookieContext } from '@/app/cookieProviders';
-const CleanAddSection = ({ section, onChange, onRemove }) => {
-  const [progress, setProgress] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+import VideoUpload from '../uploading/VideoUpload';
+const CleanAddSection = ({ section, onChange, onRemove, courseId }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { courseId } = useContext(courseContext);
-  const { cookie } = useContext(cookieContext);
-
+  const [isError, setIsError] = useState(false);
   const [name, setName] = useState(section.name);
   const [title, setTitle] = useState(section.title);
-  const [videos, setVideos] = useState(section.videos);
-  const [materials, setMaterials] = useState(section.materials);
+  const [uploadedUrl, setuploadedUrl] = useState([]);
+  const [uploadedMaterialUrl, setuploadedMaterialUrl] = useState([]);
   const handleNameChange = (e) => {
     setName(e.target.value);
-    onChange({ ...section, name: e.target.value });
   };
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
-    onChange({ ...section, title: e.target.value });
-  };
-
-  const handleVideoFileChange = (event) => {
-    setVideos([...event.target.files]);
-  };
-
-  const handleMaterialFileChange = (e) => {
-    setMaterials([...e.target.files]);
   };
 
   const handleSave = async () => {
-    setIsSubmitting(true);
-    let formData = new FormData();
-    formData.append('bucketName', courseId);
-    formData.append('folderName', name);
-    formData.append('folderTitle', title);
-    videos.forEach((video) => {
-      formData.append('binary', video);
-    });
-    materials.forEach((material) => {
-      formData.append('binary', material);
-    });
     try {
-      const res = await axios.post(
-        'https://a-pathshala-service-2.onrender.com/api/v1/course/uploadFolder',
-        formData,
+      setIsSubmitting(true);
+      await fetch(
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_SETSECTION,
         {
+          method: 'POST',
           headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: cookie,
+            'Content-Type': 'application/json',
           },
+          credentials: 'include',
 
-          onUploadProgress: (ProgressEvent) => {
-            setProgress(
-              Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
-            );
-          },
+          body: JSON.stringify({
+            chapterName: name,
+            chapterTitle: title,
+            videoTitles: uploadedUrl,
+            pdfLinks: uploadedMaterialUrl,
+            course: courseId,
+          }),
         }
-      );
-      console.log(res);
-
-      if (res.status === 200) {
-        setProgress(0);
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-        alert('Section Added Successfully');
-      }
-    } catch (error) {
-      setProgress(0);
-      setIsSubmitting(false);
-      console.log(error);
+      )
+        .then(async (res) => {
+          return res;
+        })
+        .then(async (data) => {
+          // console.log(data);
+          const newData = await data.json();
+          if (newData.success) {
+            // setIsSuccess(true);
+            setIsSubmitting(false);
+            // setLoading(false);
+            console.log(newData);
+          } else {
+            // setLoading(false);
+            setIsSubmitting(false);
+            // setError(true);
+            throw new Error(data);
+          }
+        });
+    } catch (err) {
+      setIsError(true);
+      console.log(err);
     }
   };
 
@@ -111,38 +96,24 @@ const CleanAddSection = ({ section, onChange, onRemove }) => {
       </div>
       <div className="mb-2">
         <label className="block font-bold mb-2">Videos</label>
-        <div className="flex items-center mb-2">
-          <input
-            className="mr-2"
-            type="file"
-            multiple
-            accept=".mp4,.avi,.wmv,.mov,.flv,.mkv"
-            onChange={(e) => handleVideoFileChange(e)}
+        <div className=" mb-2">
+          <VideoUpload
+            uploadedUrl={uploadedUrl}
+            setuploadedUrl={setuploadedUrl}
           />
         </div>
       </div>
       <div className="mb-2">
         <label className="block font-bold mb-2">Materials</label>
-        <div className="flex items-center mb-2">
-          <input
-            className="mr-2"
-            type="file"
-            multiple
-            accept=".pdf,.ppt,.pptx,.doc,.docx"
-            onChange={(e) => handleMaterialFileChange(e)}
-          />
-        </div>
+        <VideoUpload
+          uploadedUrl={uploadedMaterialUrl}
+          setuploadedUrl={setuploadedMaterialUrl}
+        />
       </div>
       {isSubmitting ? (
         <div className="relative pt-1">
-          <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-300">
-            <div
-              style={{ width: `${progress}%` }}
-              className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 transition-all duration-500 ease-in-out"
-            ></div>
-          </div>
           <div className="text-center mt-2 text-xs font-semibold text-gray-600">
-            {`${progress}%`}
+            {`Submitting%`}
           </div>
         </div>
       ) : (
@@ -154,14 +125,10 @@ const CleanAddSection = ({ section, onChange, onRemove }) => {
           >
             Save Section
           </button>
-          <button
-            type="button"
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onClick={onRemove}
-          >
-            Remove Section
-          </button>
         </div>
+      )}
+      {isError && (
+        <div className=" text-red-600">Error While Saving the Section</div>
       )}
     </div>
   );
