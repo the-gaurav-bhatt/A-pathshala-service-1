@@ -5,10 +5,15 @@ import CourseCard from '../CourseCard';
 const PopularCourses = () => {
   const [PopularCourses, setPopularCourses] = useState([]);
   useEffect(() => {
-    const result = CourseData.filter((course) => course.rating >= 4.5)
-      .sort((a, b) => a.rating - b.rating)
-      .slice(0, 4);
-    setPopularCourses(result);
+    const findCourse = async () => {
+      const result = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_POPULARCOURSE
+      );
+      const data = await result.json();
+      console.log(data);
+      setPopularCourses(data);
+    };
+    findCourse();
   }, []);
 
   return (
@@ -16,7 +21,7 @@ const PopularCourses = () => {
       <h2 className="font-bold text-3xl text-black m-10 ms-12">
         Popular Courses{' '}
       </h2>
-      <div className="grid md:grid-cols-3 gap-6 mx-6 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid md:grid-cols-3 gap-6 mx-6 lg:grid-cols-4 overflow-x-auto xl:grid-cols-5">
         {PopularCourses.map((course, ind) => (
           <CourseCard key={ind} course={course} />
         ))}

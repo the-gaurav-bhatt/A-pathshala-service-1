@@ -1,4 +1,3 @@
-'use client';
 import Checkout from '@/app/components/courseConsume/Checkout';
 import CourseContent from '@/app/components/courseConsume/CourseContent';
 import CourseHeader from '@/app/components/courseConsume/CourseHeader';
@@ -21,28 +20,38 @@ const getCourse = async (id) => {
 };
 async function CourseDetail({ params }) {
   console.log('Going to fetch Course Detail');
-  const data = await getCourse('6593c981512040a1433b6b61');
+  const data = await getCourse(params.id);
   console.log(data);
   return (
-    <div className={` grid grid-cols-3 w-3/4 `}>
+    <div className={` grid grid-cols-3 lg:w-3/4 `}>
       <div className="lg:ms-8 relative pb-8 col-span-3 px-4 sm:px-6 lg:px-8">
-        <CourseHeader title={data.title} />
+        <CourseHeader title={data?.title} />
 
         <div className="flex">
           <div className="pr-4 p-4 shadow-md rounded-md shadow-sky-300 border-2 border-solid border-sky-100">
             <h3 className="text-2xl font-bold mb-4">Description</h3>
-            <div className="my-4  grid grid-cols-3" id="description">
-              <div className=" col-span-3 ">
-                <img src={data.thumbNail} />
-                <p className={inter.className}>{data.description}</p>
+            <div className="my-4 " id="description">
+              <div className="">
+                <div className="h-screen">
+                  <img
+                    className=" object-fill w-full rounded-xl shadow-md mb-2 shadow-stone-400 h-1/2"
+                    src={
+                      `https://source.unsplash.com/random/?tech` ||
+                      data?.thumbNail
+                    }
+                  />
+                  <p className={inter.className + ' overflow-clip'}>
+                    {data?.description}
+                  </p>
+                </div>
                 <CourseContent sections={data.content} />
               </div>
               <div className=" w-screen  md:w-full">
                 <Checkout
-                  url={data.content[0].videoTitles[0].url}
-                  teacher={data.tutor.name}
-                  price={data.price}
-                  name={data.title}
+                  url={data?.content[0]?.videoTitles[0]?.url}
+                  teacher={data?.tutor.name}
+                  price={data?.price}
+                  name={data?.title}
                   rating={4.5}
                 />
               </div>

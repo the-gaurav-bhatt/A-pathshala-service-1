@@ -1,12 +1,30 @@
 'use client';
+// import { useRouter,Link } from 'next/navigation';
+import Link from 'next/link';
 import { useState, React } from 'react';
+const getCourseName = async (query) => {
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_BACKEND +
+      process.env.NEXT_PUBLIC_QUERY +
+      `?query=${query}`
+  );
+  const data = await res.json();
+  return data;
+};
 const SearchBar = () => {
-  const [query, setQuery] = useState('');
+  const [showModel, setShowModel] = useState(false);
 
-  const options = ['Secondary', '+2', 'Bachelors'];
-
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
+  const [result, setResult] = useState([{}]);
+  // const router = useRouter();
+  // const handleSearch = (_id) => {
+  //   router.push(`/courses/${_id}`);
+  // };
+  const handleInputChange = async (event) => {
+    const result = await getCourseName(event.target.value);
+    setResult(result);
+    if (event.target.value.length === 0) {
+      setShowModel(false);
+    } else setShowModel(true);
   };
 
   return (
@@ -20,21 +38,34 @@ const SearchBar = () => {
       </span>
       <input
         type="text"
-        className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-blue-300 focus:ring focus:ring-blue-300 focus:ring-opacity-50 sm:text-sm"
+        className="block w-full relative pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-blue-300 focus:ring focus:ring-blue-300 focus:ring-opacity-50 sm:text-sm"
         placeholder="Search..."
-        value={query}
+        onClick={() => setShowModel(!showModel)}
         onChange={handleInputChange}
         list="options"
+        // onSubmit={}
       />
-      <datalist id="options">
-        {options
-          .filter((option) =>
-            option.toLowerCase().includes(query.toLowerCase())
-          )
-          .map((option, index) => (
-            <option key={index} value={option} />
-          ))}
-      </datalist>
+      {result.length >= 1 && (
+        <div
+          className={`absolute top-full  dropdown-content dropdown-start   ${
+            showModel ? 'block' : 'hidden'
+          } rounded-sm  w-full h-fit shadow-lg  z-50 bg-white  overflow-y-auto`}
+        >
+          <ul className="drop-shadow-sm max-h-96 overflow-y-auto">
+            {result.slice(0, 10).map((result, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  setShowModel(false);
+                }}
+                className="hover:bg-gray-200 hover:text-gray-950 cursor-pointer pl-4 py-1 text-sm text-gray-700 "
+              >
+                <Link href={`/courses/${result._id}`}>{result.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

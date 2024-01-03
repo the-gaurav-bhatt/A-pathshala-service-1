@@ -9,7 +9,7 @@ const CourseCard = ({ course }) => {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
       <img
-        src={course.image}
+        src={`https://source.unsplash.com/random/?tech`}
         alt={course.title}
         className="w-full h-48 object-cover"
       />
@@ -32,7 +32,7 @@ const CourseCard = ({ course }) => {
         </div>
         <div className="flex justify-center gap-4">
           <Link
-            href={'/courses/1'}
+            href={`/courses/${course._id}`}
             className="inline-block whitespace-nowrap bg-green-500 hover:bg-green-600 text-white text-sm font-semibold py-2 px-4 mt-4 rounded transition duration-200"
           >
             View Course

@@ -11,12 +11,7 @@ import Profile from './Profile';
 import { useRouter } from 'next/navigation';
 import { userContext } from '@/app/userProvider';
 import { cookieContext } from '@/app/cookieProviders';
-// async function getUserData() {
-//   const res = await fetch(
-//     'https://a-pathshala-service-2.onrender.com/api/v1/student/login'
-//   );
-//   return res.json();
-// }
+
 export default function Navbar() {
   const { setUser } = useContext(userContext);
   // console.log(cookie);
@@ -51,9 +46,9 @@ export default function Navbar() {
       {currentUrl != '/courses' && <SearchBar />}
       <Link
         href={'/become-teacher'}
-        className="text-3xl bg-sidebar-neutral-gradient px-2 rounded-md shadow-lg whitespace-nowrap font-bold text-blue-500"
+        className="text-3xl bg-sidebar-neutral-gradient px-4 rounded-md shadow-lg whitespace-nowrap font-bold text-blue-500"
       >
-        Become Teacher
+        Create Course
       </Link>
       <NavItems />
 
@@ -75,8 +70,8 @@ export default function Navbar() {
             >
               <button className="flex items-center focus:outline-none">
                 {!user?.img ? (
-                  <span className="bg-blue-400 text-lg text-white m-2 z-50 flex justify-center items-center h-10 w-10  rounded-full text-center">
-                    {user.name}
+                  <span className="bg-blue-400 text-sm text-white m-2 z-50 flex justify-center items-center h-10 w-10  rounded-full text-center">
+                    {user.name.split(' ')[0]}
                   </span>
                 ) : (
                   <img
@@ -84,7 +79,7 @@ export default function Navbar() {
                     width={39}
                     height={39}
                     className=" rounded-full mr-2"
-                    alt="Profile"
+                    alt={`${user.name.split(' ')[0]}`}
                   />
                 )}
                 <span className="text-gray-700 font-medium">{user.name}</span>

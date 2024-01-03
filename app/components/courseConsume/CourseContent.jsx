@@ -98,7 +98,7 @@ const CourseContent = ({ sections }) => {
                     {section.pdfLinks?.map((material, index) => (
                       <li key={material._id} className="list-none ps-2">
                         <a href={material.url} className="text-sm sm:text-base">
-                          {material.name}
+                          {material.name} - material
                         </a>
                       </li>
                     ))}
