@@ -32,7 +32,7 @@ const VideoUpload = ({ setuploadedUrl, uploadedUrl }) => {
     const data = await fetchUrlOffile(filePath);
 
     // Update the state with the new URL and file name
-    setuploadedUrl([...uploadedUrl, data]);
+    setuploadedUrl([...uploadedUrl, { name: file.name, url: data }]);
     setUploadedFiles([...uploadedFiles, file.name]);
     console.log(uploadedUrl);
   };

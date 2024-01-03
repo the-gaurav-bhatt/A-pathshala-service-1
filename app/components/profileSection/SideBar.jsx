@@ -3,18 +3,27 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { userContext } from '@/app/userProvider';
-import { cookieContext } from '@/app/cookieProviders';
 import { useContext } from 'react';
-
+import { FiSettings, FiActivity, FiMonitor, FiLogOut } from 'react-icons/fi';
 const SideBar = () => {
   const { setUser } = useContext(userContext);
-  const { setCookie } = useContext(cookieContext);
   const router = useRouter();
   const currRoute = usePathname();
-  const handleClick = async () => {
-    setUser({});
-    setCookie(null);
-    router.push('/');
+  const handleLogout = async () => {
+    try {
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_LOGOUT,
+        {
+          credentials: 'include',
+        }
+      );
+      if (res.ok) {
+        setUser({});
+        router.push('/');
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const selected =
@@ -28,21 +37,12 @@ const SideBar = () => {
           {
             <>
               <Link
-                href="/account-profile/mycourses"
+                href="/account-profile/dashboard"
                 className={`${
-                  currRoute === '/account-profile/mycourses' ? selected : others
+                  currRoute === '/account-profile/dashboard' ? selected : others
                 } mt-1 flex pe-2 sm:mt-0 sm:ml-3 px-3 py-2 font-bold hover:bg-gray-200 focus:outline-none focus:bg-slate-100 focus:text-blue-600`}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="#000000"
-                  width="20"
-                  height="20"
-                  className="w-6 me-2 h-6"
-                  viewBox="0 0 1920 1920"
-                >
-                  {/* Path data */}
-                </svg>
+                <FiActivity className=" text-xl me-3 text-blue-400" />
                 Dashboard
               </Link>
 
@@ -50,50 +50,31 @@ const SideBar = () => {
                 href="/account-profile/purchase"
                 className={`${
                   currRoute === '/account-profile/purchase' ? selected : others
-                } mt-1 flex pe-2 sm:mt-0 sm:ml-3 px-3 py-2 font-bold hover:bg-gray-200 focus:outline-none focus:bg-slate-100 focus:text-blue-600`}
+                }  mt-1 flex pe-2 sm:mt-0 sm:ml-3 px-3 py-2 font-bold hover:bg-gray-200 focus:outline-none focus:bg-slate-100 focus:text-blue-600`}
               >
+                <FiMonitor className=" text-xl me-3 text-blue-400" />
                 Buy Course
               </Link>
 
-              <button disabled={true}>
+              <button>
                 <a
-                  href="/account-profile/settings"
+                  href="/account-profile/profile"
                   className={`${
-                    currRoute === '/account-profile/settings'
-                      ? selected
-                      : others
-                  } mt-1 flex pe-2 sm:mt-0 sm:ml-3 px-3 py-2 cursor-not-allowed font-bold hover:bg-gray-200 focus:outline-none focus:bg-slate-100 focus:text-blue-600`}
+                    currRoute === '/account-profile/profile' ? selected : others
+                  }  mt-1 flex pe-2 sm:mt-0 sm:ml-3 px-3 py-2  font-bold hover:bg-gray-200 focus:outline-none focus:bg-slate-100 focus:text-blue-600`}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 me-2"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    {/* Path data */}
-                  </svg>
-                  Settings
+                  <FiSettings className=" text-xl me-3 text-blue-400" />
+                  Profile
                 </a>
               </button>
 
               <button
-                onClick={() => handleClick()}
+                onClick={handleLogout}
                 className={`${
                   currRoute === '/account-profile/logout' ? selected : others
                 } mt-1 flex pe-2 sm:mt-0 sm:ml-3 px-3 py-2 font-bold hover:bg-gray-200 focus:outline-none focus:bg-slate-100 focus:text-blue-600`}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 me-2"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  {/* Path data */}
-                </svg>
+                <FiLogOut className=" text-xl me-3 text-blue-400" />
                 Logout
               </button>
             </>

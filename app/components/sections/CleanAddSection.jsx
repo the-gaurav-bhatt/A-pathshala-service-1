@@ -7,7 +7,7 @@ const CleanAddSection = ({ section, onChange, onRemove, courseId }) => {
   const [name, setName] = useState(section.name);
   const [title, setTitle] = useState(section.title);
   const [uploadedUrl, setuploadedUrl] = useState([]);
-  const [uploadedMaterialUrl, setuploadedMaterialUrl] = useState([]);
+  const [uploadedMaterialUrl, setuploadedMaterialUrl] = useState([{}]);
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -27,7 +27,6 @@ const CleanAddSection = ({ section, onChange, onRemove, courseId }) => {
             'Content-Type': 'application/json',
           },
           credentials: 'include',
-
           body: JSON.stringify({
             chapterName: name,
             chapterTitle: title,

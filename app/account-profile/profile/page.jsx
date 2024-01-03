@@ -13,7 +13,7 @@ const page = () => {
     );
   } else
     return (
-      <div>
+      <div className="m-6 p-3">
         <PersonalInformation userProfile={user} />
       </div>
     );

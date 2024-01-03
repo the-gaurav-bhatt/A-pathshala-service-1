@@ -1,44 +1,39 @@
 'use client';
 import React from 'react';
+import ReactPlayer from 'react-player';
 import YouTubeVideo from '../youtubeEmbed/YoutubeVideo';
 import { useRouter } from 'next/navigation';
 
-const Checkout = ({ course }) => {
+const Checkout = ({ url, teacher, name, rating, price }) => {
   const router = useRouter();
 
   const handleBuyNow = () => {
     router.push('/account-profile/purchase');
   };
   return (
-    <div className="bg-color-3-100  mb-4">
+    <div className="fixed bg-white border-double border-4 border-sky-300 shadow-lg shadow-sky-200 rounded-lg top-10 right-0 z-50 mb-4 hidden md:block">
       <div className="mb-8 w-full border rounded-sm">
         {/* <video className=" rounded-md " width={640} height={360} controls>
           <source src="/video.mp4" type="video/mp4" />
         </video> */}
       </div>
-      <YouTubeVideo videoId={'NE0dWeV5epA'} />
+      <ReactPlayer url={url} controls={true} width={300} height={300} />
       <div className="rounded-lg shadow-lg overflow-hidden">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center">
-            <span className="text-gray-900 font-medium">{course.teacher}</span>
+            <span className="text-gray-900 font-bold text-lg">{teacher}</span>
           </div>
           {/* <button classNameName=" bg-blue-200 py-1 px-3 rounded-lg text-blue-600">
             Follow
           </button> */}
         </div>
         <div className="px-4 py-2 border-t border-gray-200 flex items-center justify-between">
-          <span className="text-sm font-medium text-gray-900">
-            {course.name}
-          </span>
-          <span className="text-sm font-medium text-gray-700">
-            {course.rating}
-          </span>
+          <span className=" font-bold text-gray-900">{name}</span>
+          <span className="font-medium  text-emerald-400">{rating}</span>
         </div>
         <div className="px-4 py-2 border-t border-gray-200 flex items-center justify-between">
           <span className="text-sm text-gray-600">Total</span>
-          <span className="text-sm font-medium text-gray-900">
-            {course.price}
-          </span>
+          <span className="text-sm font-medium text-gray-900">Rs {price}</span>
         </div>
         <div className="px-4 py-2">
           <button

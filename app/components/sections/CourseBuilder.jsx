@@ -23,7 +23,7 @@ const CourseBuilder = ({ courseId }) => {
   };
   const handleCourseSave = (e) => {
     e.preventDefault();
-    router.push('/account-profile/mycourses');
+    router.push('/account-profile/dashboard');
   };
 
   const handleSectionRemove = (index) => {

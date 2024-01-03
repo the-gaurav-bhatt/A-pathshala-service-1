@@ -1,12 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-const CourseHeader = ({ course }) => {
+const CourseHeader = ({ title }) => {
   return (
     <>
       <div className="w-full">
-        <h1 className="text-4xl  font-bold text-gray-900 py-4">
-          {course.title}
-        </h1>
+        <h1 className="text-4xl  font-bold text-gray-900 py-4">{title}</h1>
       </div>
       <div className="flex border-b pb-2 items-center justify-between mb-4">
         <div className="flex  items-center">

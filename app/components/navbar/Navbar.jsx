@@ -22,24 +22,20 @@ export default function Navbar() {
   // console.log(cookie);
   const router = useRouter();
   const [toggleProfile, setToggleProfile] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const currentUrl = usePathname();
   const { user } = useContext(userContext);
   const { setCookie } = useContext(cookieContext);
-  useEffect(() => {
-    if (user?._id) {
-      setIsLoggedIn(true);
-    }
-  }, [user]);
 
   const handleProfileClick = () => {};
   const handleLogout = async () => {
     try {
       const res = await fetch(
-        'https://a-pathshala-service-2.onrender.com/api/v1/student/logout'
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_LOGOUT,
+        {
+          credentials: 'include',
+        }
       );
       if (res.ok) {
-        setIsLoggedIn(false);
         setUser({});
         setCookie(null);
         router.push('/');
@@ -61,9 +57,9 @@ export default function Navbar() {
       </Link>
       <NavItems />
 
-      {!isLoggedIn && <CallToAction />}
+      {!user?._id && <CallToAction />}
 
-      {isLoggedIn && (
+      {user?._id && (
         <div className="relative ">
           <button
             onClick={handleProfileClick}
@@ -75,20 +71,16 @@ export default function Navbar() {
           {toggleProfile ? (
             <div
               className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200"
-              // onMouseEnter={() => setToggleProfile(true)}
               onMouseLeave={() => setToggleProfile(false)}
             >
-              <button
-                className="flex items-center focus:outline-none"
-                // onClick={toggleDropdown}
-              >
+              <button className="flex items-center focus:outline-none">
                 {!user?.img ? (
                   <span className="bg-blue-400 text-lg text-white m-2 z-50 flex justify-center items-center h-10 w-10  rounded-full text-center">
                     {user.name}
                   </span>
                 ) : (
                   <img
-                    src={'/icon.svg'}
+                    src={user.img}
                     width={39}
                     height={39}
                     className=" rounded-full mr-2"
@@ -98,7 +90,7 @@ export default function Navbar() {
                 <span className="text-gray-700 font-medium">{user.name}</span>
               </button>
               <Link
-                href="/account-profile"
+                href="/account-profile/dashboard"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               >
                 View Profile
@@ -127,7 +119,7 @@ export default function Navbar() {
               >
                 Courses
               </Link>
-              {isLoggedIn && (
+              {user._id && (
                 <button
                   onClick={handleLogout}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
