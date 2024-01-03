@@ -47,7 +47,7 @@ function CreateNewCourse({ givenCourse, setNext, setCourseId }) {
     let url;
     try {
       setIsSubmitting(true);
-      if (givenCourse.Id) {
+      if (givenCourse._id) {
         url =
           process.env.NEXT_PUBLIC_BACKEND +
           process.env.NEXT_PUBLIC_EDITCOURSE +
