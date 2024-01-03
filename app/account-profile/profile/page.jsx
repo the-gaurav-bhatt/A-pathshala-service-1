@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import PersonalInformation from '@/app/components/profileSection/PersonalInformaton';
 import { userContext } from '@/app/userProvider';
-const page = () => {
+const Page = () => {
   const { user } = useContext(userContext);
 
   if (!user) {
@@ -19,4 +19,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
