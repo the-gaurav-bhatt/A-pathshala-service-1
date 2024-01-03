@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import BounceSpinners from '../spinners/BounceSpinners';
 import { userContext } from '@/app/userProvider';
 import OptInterface from './OptInterface';
+import GoogleSvg from '../spinners/GoogleSvg';
 const Login2 = () => {
   const { setUser } = useContext(userContext);
   const [email, setEmail] = useState('');
@@ -123,36 +124,8 @@ const Login2 = () => {
     router.push(
       process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_GOOGLE
     );
-    // if (data.ok) {
-    //   console.log(data.json());
-    //   router.push('/signup');
-    // }
-    // try {
-    //   const { code } = await router.push(
-    //     'https://accounts.google.com/o/oauth2/v2/auth?' +
-    //       new URLSearchParams({
-    //         client_id: process.env.GOOGLE_CLIENT_ID,
-    //         redirect_uri: `${process.env.NEXT_PUBLIC_APP_URL}/auth/google/redirect`,
-    //         response_type: 'code',
-    //         scope: 'email profile openid',
-    //       })
-    //   );
-    //   const response = await fetch('/api/auth/google', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ code }),
-    //   });
-    //   const data = await response.json();
-    //   console.log(data);
-    //   // TODO: Handle successful login
-    // } catch (error) {
-    //   console.error(error);
-    // }
   };
 
-  const handleFacebook = async () => {};
   if (otpInterface) {
     return (
       <OptInterface
@@ -291,7 +264,7 @@ const Login2 = () => {
               onClick={handleResetPasswordClick}
               className={`${
                 loading ? ' bg-blue-500 ' : ' bg-gray-200 '
-              } text-blue-500 font-bold py-2 px-4 rounded mb-4`}
+              } text-blue-500 hover:bg-gray-400 font-bold py-2 shadow-sm border-2 border-solid  px-4 rounded mb-4`}
             >
               {loading ? <BounceSpinners /> : 'Reset Password'}
             </button>
@@ -299,16 +272,11 @@ const Login2 = () => {
 
           <button
             onClick={handleGoogle}
-            className="bg-red-500 hover:bg-red-700 md:text-sm whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4"
+            className=" bg-white shadow-md border-2 border-solid flex gap-2 justify-items-center items-center text-black md:text-sm whitespace-nowrap font-bold py-2 px-4 rounded mb-4"
           >
-            Log In with Google
+            <GoogleSvg />
+            <span>Log In with Google</span>
           </button>
-          {/* <button
-            onClick={handleFacebook}
-            className="bg-blue-500 hover:bg-blue-700 whitespace-nowrap text-white font-bold py-2 px-4 rounded mb-4"
-          >
-            Log In with Facebook
-          </button> */}
         </div>
       </div>
     </div>
