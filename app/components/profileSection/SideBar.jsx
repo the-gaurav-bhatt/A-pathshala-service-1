@@ -31,7 +31,7 @@ const SideBar = () => {
   const others = 'hover:rounded-s-full text-black px-2 text-sm font-bold';
 
   return (
-    <aside className="bg-white border-e hidden md:flex  text-black h-screen w-1/5  flex-col">
+    <aside className="bg-white border-e hidden md:flex  text-black h-screen min-w-[20%]  flex-col">
       {
         <div className="flex flex-col gap-3 ps-4 pt-8">
           {

@@ -71,7 +71,7 @@ const CoursesTable = () => {
           </thead>
           <tbody>
             {courses &&
-              courses.map((course) => (
+              courses?.map((course) => (
                 <tr key={course._id}>
                   <td className="border-b border-[#eee] py-5 px-4 pl-9 xl:pl-11">
                     <div className="flex items-center">
@@ -81,7 +81,7 @@ const CoursesTable = () => {
                         className="h-10 w-10 object-cover rounded mr-2"
                       />
                       <div>
-                        <h5 className=" font-bold text-black">
+                        <h5 className=" font-bold whitespace-nowrap truncate text-black">
                           {course.title}
                         </h5>
                         <p className="text-sm">

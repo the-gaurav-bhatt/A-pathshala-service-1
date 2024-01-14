@@ -1,26 +1,37 @@
 'use client';
-import CourseData from '../data/CourseData';
+// import CourseData from '../data/CourseData';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CourseFilter from './CourseFilters';
 import CourseList from '../teachers/CourseList';
 import CourseItemsByLevel from './CourseItemsByLevels';
 import CategorySidebar from './CategorySideBar';
 const Courses = () => {
-  const COURSES = CourseData;
-  const [filteredCourses, setFilteredCourses] = useState(COURSES);
+  const [filteredCourses, setFilteredCourses] = useState(null);
+  const [allCourses, setCourses] = useState(null);
   const [isClosed, setIsClosed] = useState(false);
-
+  useEffect(() => {
+    const getCourses = async () => {
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND + process.env.NEXT_PUBLIC_GETALLCOURSES
+      );
+      const data = await res.json();
+      setFilteredCourses(data.courses);
+      setCourses(data.courses);
+    };
+    getCourses();
+  }, []);
   console.log(filteredCourses);
-  console.log('Showing filtered COurses' + filteredCourses);
   const handleFilterChange = ({ category = '', search = '' }) => {
-    let courses = COURSES;
+    let courses = allCourses;
     if (category) {
-      courses = COURSES.filter((course) => course.category === category);
+      courses = filteredCourses.filter(
+        (course) => course.category === category
+      );
     }
     if (search) {
       const searchTerm = search.toLowerCase();
-      courses = COURSES.filter(
+      courses = filteredCourses.filter(
         (course) =>
           course.title.toLowerCase().includes(searchTerm) ||
           course?.description?.toLowerCase().includes(searchTerm)
@@ -37,7 +48,7 @@ const Courses = () => {
   return (
     <>
       <div className="flex ">
-        {isClosed ? (
+        {/* {isClosed ? (
           // <button onClick={handleOpen} className="block">
           <svg
             className="w-8 h-8 ms-3 mt-3 me-3 hover:cursor-pointer"
@@ -54,10 +65,10 @@ const Courses = () => {
             <path d="M21 6H3" />
             <path d="M21 18H3" />
           </svg>
-        ) : (
-          // </button>
-          <CategorySidebar setIsClosed={setIsClosed} />
-        )}
+        ) : ( */}
+        {/* // </button>
+          // <CategorySidebar setIsClosed={setIsClosed} /> */}
+        {/* )} */}
         <div className="container mx-auto">
           <CourseFilter onFilterChange={handleFilterChange} />
           <CourseList courses={filteredCourses} gridColumns={3} />

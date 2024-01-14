@@ -9,7 +9,7 @@ const Signup = () => {
   const [name, setName] = useState('');
   const { setUser } = useContext(userContext);
   const [email, setEmail] = useState('');
-  const [role, setRole] = useState('user');
+  const [role, setRole] = useState('student');
   const [password, setPassword] = useState('');
   const router = useRouter();
   const [error, setError] = useState(false);

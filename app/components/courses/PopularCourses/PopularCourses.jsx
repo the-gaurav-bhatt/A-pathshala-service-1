@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import CourseData from '../../data/CourseData';
+// import CourseData from '../../data/CourseData';
 import CourseCard from '../CourseCard';
 const PopularCourses = () => {
   const [PopularCourses, setPopularCourses] = useState([]);
