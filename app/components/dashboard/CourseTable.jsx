@@ -70,7 +70,7 @@ const CoursesTable = () => {
             </tr>
           </thead>
           <tbody>
-            {courses &&
+            {courses.length >= 1 &&
               courses?.map((course) => (
                 <tr key={course._id}>
                   <td className="border-b border-[#eee] py-5 px-4 pl-9 xl:pl-11">
