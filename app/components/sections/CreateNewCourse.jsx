@@ -14,15 +14,24 @@ function CreateNewCourse({ givenCourse, setNext, setCourseId }) {
     subtitle: '',
     requirements: '',
     description: '',
+    category: '',
     price: 0,
     discount: 0,
     language: '',
     thumbNail: '',
   });
+  const categories = [
+    'Computer Science',
+    'Management',
+    'Design and Art',
+    'Mathematics',
+  ];
+  const Languages = ['English', 'Hindi', 'Nepali'];
 
   useEffect(() => {
     if (givenCourse) {
       setCourse({
+        category: givenCourse.category || 'Computer Science',
         title: givenCourse.title || '',
         subtitle: givenCourse.subtitle || '',
         requirements: givenCourse.requirements || '',
@@ -141,6 +150,29 @@ function CreateNewCourse({ givenCourse, setNext, setCourseId }) {
         </div>
         <div className="mb-4">
           <label
+            htmlFor="category"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Category
+          </label>
+          <select
+            id="category"
+            name="category"
+            value={course.category}
+            onChange={handleInputChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            required
+          >
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mb-4">
+          <label
             htmlFor="requirements"
             className="block text-gray-700 font-bold mb-2"
           >
@@ -211,15 +243,20 @@ function CreateNewCourse({ givenCourse, setNext, setCourseId }) {
           >
             Language
           </label>
-          <input
+          <select
             id="language"
-            type="text"
             name="language"
             value={course.language}
             onChange={handleInputChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            // required
-          />
+            required
+          >
+            {Languages.map((language, index) => (
+              <option key={index} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
         </div>
         <ImageUpload
           setuploadedImageUrl={setuploadedImageUrl}

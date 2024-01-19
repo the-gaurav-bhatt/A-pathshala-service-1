@@ -11,6 +11,7 @@ import Profile from './Profile';
 import { useRouter } from 'next/navigation';
 import { userContext } from '@/app/userProvider';
 import { cookieContext } from '@/app/cookieProviders';
+import { result } from './Profile';
 
 export default function Navbar() {
   const { setUser } = useContext(userContext);
@@ -69,19 +70,19 @@ export default function Navbar() {
               onMouseLeave={() => setToggleProfile(false)}
             >
               <button className="flex items-center focus:outline-none">
-                {!user?.img ? (
-                  <span className="bg-blue-400 text-sm text-white m-2 z-50 flex justify-center items-center h-10 w-10  rounded-full text-center">
-                    {user.name.split(' ')[0]}
-                  </span>
-                ) : (
+                {
                   <img
-                    src={user.img}
+                    src={
+                      user.img ||
+                      `https://api.multiavatar.com/${result}.png
+                    `
+                    }
                     width={39}
                     height={39}
                     className=" rounded-full mr-2"
                     alt={`${user.name.split(' ')[0]}`}
                   />
-                )}
+                }
                 <span className="text-gray-700 font-medium">{user.name}</span>
               </button>
               <Link

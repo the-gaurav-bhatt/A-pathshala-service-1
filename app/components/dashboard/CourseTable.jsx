@@ -21,6 +21,7 @@ const CoursesTable = () => {
       }/${courseId}`,
       {
         method: 'DELETE',
+        credentials: 'include',
       }
     );
 
